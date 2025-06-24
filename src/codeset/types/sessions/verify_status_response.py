@@ -1,18 +1,18 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Union, Optional
+from typing import Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from ..._models import BaseModel
 from .job_status import JobStatus
 from ..error_info import ErrorInfo
 from ..container_info import ContainerInfo
 
-__all__ = ["VerifyStatusResponse", "VerifyResultResponse", "VerifyResultResponseResult"]
+__all__ = ["VerifyStatusResponse", "Result"]
 
 
-class VerifyResultResponseResult(BaseModel):
+class Result(BaseModel):
     execution_duration_seconds: float
     """Total execution time for the verification step."""
 
@@ -34,7 +34,7 @@ class VerifyResultResponseResult(BaseModel):
     tool: Optional[Literal["test_suite"]] = None
 
 
-class VerifyResultResponse(BaseModel):
+class VerifyStatusResponse(BaseModel):
     created_at: datetime
     """Timestamp when the job was created (UTC)."""
 
@@ -59,11 +59,8 @@ class VerifyResultResponse(BaseModel):
     error: Optional[ErrorInfo] = None
     """Details about an error that occurred during job processing."""
 
-    result: Optional[VerifyResultResponseResult] = None
+    result: Optional[Result] = None
     """Result from a test suite verifier."""
 
     started_at: Optional[datetime] = None
     """Timestamp when the job processing started (UTC)."""
-
-
-VerifyStatusResponse: TypeAlias = Union[VerifyResultResponse, VerifyStatusResponse]
