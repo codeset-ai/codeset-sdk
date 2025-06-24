@@ -13,6 +13,9 @@ class SampleListResponseItem(BaseModel):
     language: str
     """Primary programming language of the sample."""
 
+    repository: str
+    """The repository of the sample."""
+
     sample_id: str
     """Unique identifier for the sample (e.g., 'traccar-1')."""
 
