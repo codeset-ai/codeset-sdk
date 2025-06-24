@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Any, cast
-
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
@@ -88,7 +86,7 @@ class VerifyResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> VerifyStatusResponse:
         """
-        Get verification status and result
+        Get a verification job, including the result if it's completed
 
         Args:
           extra_headers: Send extra headers
@@ -103,17 +101,12 @@ class VerifyResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         if not job_id:
             raise ValueError(f"Expected a non-empty value for `job_id` but received {job_id!r}")
-        return cast(
-            VerifyStatusResponse,
-            self._get(
-                f"/sessions/{session_id}/verify/{job_id}",
-                options=make_request_options(
-                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-                ),
-                cast_to=cast(
-                    Any, VerifyStatusResponse
-                ),  # Union types cannot be passed in as arguments in the type system
+        return self._get(
+            f"/sessions/{session_id}/verify/{job_id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
+            cast_to=VerifyStatusResponse,
         )
 
 
@@ -183,7 +176,7 @@ class AsyncVerifyResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> VerifyStatusResponse:
         """
-        Get verification status and result
+        Get a verification job, including the result if it's completed
 
         Args:
           extra_headers: Send extra headers
@@ -198,17 +191,12 @@ class AsyncVerifyResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         if not job_id:
             raise ValueError(f"Expected a non-empty value for `job_id` but received {job_id!r}")
-        return cast(
-            VerifyStatusResponse,
-            await self._get(
-                f"/sessions/{session_id}/verify/{job_id}",
-                options=make_request_options(
-                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-                ),
-                cast_to=cast(
-                    Any, VerifyStatusResponse
-                ),  # Union types cannot be passed in as arguments in the type system
+        return await self._get(
+            f"/sessions/{session_id}/verify/{job_id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
+            cast_to=VerifyStatusResponse,
         )
 
 
