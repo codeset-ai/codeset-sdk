@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, TypedDict
+from typing_extensions import Required, Annotated, TypedDict
+
+from .._utils import PropertyInfo
 
 __all__ = ["SessionExecuteCommandParams"]
 
@@ -11,5 +13,5 @@ class SessionExecuteCommandParams(TypedDict, total=False):
     command: Required[str]
     """The bash command to execute."""
 
-    command_timeout: int
+    api_timeout: Annotated[int, PropertyInfo(alias="timeout")]
     """Timeout for command execution in seconds (default: 300)."""

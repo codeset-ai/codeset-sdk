@@ -240,7 +240,7 @@ class TestSessions:
         session = client.sessions.execute_command(
             session_id="session_id",
             command="command",
-            command_timeout=0,
+            api_timeout=0,
         )
         assert_matches_type(SessionExecuteCommandResponse, session, path=["response"])
 
@@ -503,7 +503,7 @@ class TestAsyncSessions:
         session = await async_client.sessions.execute_command(
             session_id="session_id",
             command="command",
-            command_timeout=0,
+            api_timeout=0,
         )
         assert_matches_type(SessionExecuteCommandResponse, session, path=["response"])
 
