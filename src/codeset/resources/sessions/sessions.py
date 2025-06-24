@@ -228,7 +228,7 @@ class SessionsResource(SyncAPIResource):
         session_id: str,
         *,
         command: str,
-        api_timeout: int | NotGiven = NOT_GIVEN,
+        command_timeout: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -242,7 +242,7 @@ class SessionsResource(SyncAPIResource):
         Args:
           command: The bash command to execute.
 
-          api_timeout: Timeout for command execution in seconds (default: 300).
+          command_timeout: Timeout for command execution in seconds (default: 300).
 
           extra_headers: Send extra headers
 
@@ -259,7 +259,7 @@ class SessionsResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "command": command,
-                    "api_timeout": api_timeout,
+                    "command_timeout": command_timeout,
                 },
                 session_execute_command_params.SessionExecuteCommandParams,
             ),
@@ -464,7 +464,7 @@ class AsyncSessionsResource(AsyncAPIResource):
         session_id: str,
         *,
         command: str,
-        api_timeout: int | NotGiven = NOT_GIVEN,
+        command_timeout: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -478,7 +478,7 @@ class AsyncSessionsResource(AsyncAPIResource):
         Args:
           command: The bash command to execute.
 
-          api_timeout: Timeout for command execution in seconds (default: 300).
+          command_timeout: Timeout for command execution in seconds (default: 300).
 
           extra_headers: Send extra headers
 
@@ -495,7 +495,7 @@ class AsyncSessionsResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "command": command,
-                    "api_timeout": api_timeout,
+                    "command_timeout": command_timeout,
                 },
                 session_execute_command_params.SessionExecuteCommandParams,
             ),
