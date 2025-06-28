@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.2 (2025-06-28)
+
+Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/codeset-ai/codeset-sdk/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
+
+### Bug Fixes
+
+* **ci:** release-doctor — report correct token name ([986ea32](https://github.com/codeset-ai/codeset-sdk/commit/986ea3232e329ff2aa2dbf6ee043542052e939ca))
+
+
+### Chores
+
+* **ci:** only run for pushes and fork pull requests ([3925cce](https://github.com/codeset-ai/codeset-sdk/commit/3925ccec55d27e377699ee8d5a114b72f0acc2e7))
+
 ## 0.1.0-alpha.1 (2025-06-25)
 
 Full Changelog: [v0.0.1-alpha.0...v0.1.0-alpha.1](https://github.com/codeset-ai/codeset-sdk/compare/v0.0.1-alpha.0...v0.1.0-alpha.1)
