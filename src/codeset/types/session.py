@@ -33,5 +33,8 @@ class Session(BaseModel):
     container_info: Optional[ContainerInfo] = None
     """Information about a container."""
 
+    duration_seconds: Optional[float] = None
+    """Current duration of the session in seconds."""
+
     error: Optional[ErrorInfo] = None
     """Details about an error that occurred during job processing."""

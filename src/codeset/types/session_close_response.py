@@ -6,5 +6,8 @@ __all__ = ["SessionCloseResponse"]
 
 
 class SessionCloseResponse(BaseModel):
+    duration_seconds: float
+    """Duration of the session in seconds."""
+
     message: str
     """Success message confirming session deletion"""
