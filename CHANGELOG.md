@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.4 (2025-06-30)
+
+Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/codeset-ai/codeset-sdk/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
+
+### Bug Fixes
+
+* **ci:** correct conditional ([5226d78](https://github.com/codeset-ai/codeset-sdk/commit/5226d784af4d87df18fe2cf3e6960fb9d8c43b65))
+
 ## 0.1.0-alpha.3 (2025-06-28)
 
 Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/codeset-ai/codeset-sdk/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
