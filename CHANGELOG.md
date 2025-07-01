@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.6 (2025-07-01)
+
+Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/codeset-ai/codeset-sdk/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
+
+### Features
+
+* **api:** api update ([e5c853d](https://github.com/codeset-ai/codeset-sdk/commit/e5c853d0c2dbb936a630f1dada9e963cb0b540e0))
+
 ## 0.1.0-alpha.5 (2025-07-01)
 
 Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/codeset-ai/codeset-sdk/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)

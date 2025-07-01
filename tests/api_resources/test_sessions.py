@@ -28,6 +28,7 @@ class TestSessions:
     @parametrize
     def test_method_create(self, client: Codeset) -> None:
         session = client.sessions.create(
+            dataset="dataset",
             sample_id="sample_id",
         )
         assert_matches_type(SessionCreateResponse, session, path=["response"])
@@ -36,6 +37,7 @@ class TestSessions:
     @parametrize
     def test_method_create_with_all_params(self, client: Codeset) -> None:
         session = client.sessions.create(
+            dataset="dataset",
             sample_id="sample_id",
             ttl_minutes=0,
         )
@@ -45,6 +47,7 @@ class TestSessions:
     @parametrize
     def test_raw_response_create(self, client: Codeset) -> None:
         response = client.sessions.with_raw_response.create(
+            dataset="dataset",
             sample_id="sample_id",
         )
 
@@ -57,6 +60,7 @@ class TestSessions:
     @parametrize
     def test_streaming_response_create(self, client: Codeset) -> None:
         with client.sessions.with_streaming_response.create(
+            dataset="dataset",
             sample_id="sample_id",
         ) as response:
             assert not response.is_closed
@@ -291,6 +295,7 @@ class TestAsyncSessions:
     @parametrize
     async def test_method_create(self, async_client: AsyncCodeset) -> None:
         session = await async_client.sessions.create(
+            dataset="dataset",
             sample_id="sample_id",
         )
         assert_matches_type(SessionCreateResponse, session, path=["response"])
@@ -299,6 +304,7 @@ class TestAsyncSessions:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncCodeset) -> None:
         session = await async_client.sessions.create(
+            dataset="dataset",
             sample_id="sample_id",
             ttl_minutes=0,
         )
@@ -308,6 +314,7 @@ class TestAsyncSessions:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncCodeset) -> None:
         response = await async_client.sessions.with_raw_response.create(
+            dataset="dataset",
             sample_id="sample_id",
         )
 
@@ -320,6 +327,7 @@ class TestAsyncSessions:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncCodeset) -> None:
         async with async_client.sessions.with_streaming_response.create(
+            dataset="dataset",
             sample_id="sample_id",
         ) as response:
             assert not response.is_closed

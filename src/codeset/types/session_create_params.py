@@ -8,6 +8,9 @@ __all__ = ["SessionCreateParams"]
 
 
 class SessionCreateParams(TypedDict, total=False):
+    dataset: Required[str]
+    """Dataset name for the sample."""
+
     sample_id: Required[str]
     """Identifier of the sample to use for this session."""
 

@@ -61,6 +61,7 @@ class SessionsResource(SyncAPIResource):
     def create(
         self,
         *,
+        dataset: str,
         sample_id: str,
         ttl_minutes: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -74,6 +75,8 @@ class SessionsResource(SyncAPIResource):
         Create a new session
 
         Args:
+          dataset: Dataset name for the sample.
+
           sample_id: Identifier of the sample to use for this session.
 
           ttl_minutes: Time to live for the session in minutes (default: 30).
@@ -90,6 +93,7 @@ class SessionsResource(SyncAPIResource):
             "/sessions",
             body=maybe_transform(
                 {
+                    "dataset": dataset,
                     "sample_id": sample_id,
                     "ttl_minutes": ttl_minutes,
                 },
@@ -297,6 +301,7 @@ class AsyncSessionsResource(AsyncAPIResource):
     async def create(
         self,
         *,
+        dataset: str,
         sample_id: str,
         ttl_minutes: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -310,6 +315,8 @@ class AsyncSessionsResource(AsyncAPIResource):
         Create a new session
 
         Args:
+          dataset: Dataset name for the sample.
+
           sample_id: Identifier of the sample to use for this session.
 
           ttl_minutes: Time to live for the session in minutes (default: 30).
@@ -326,6 +333,7 @@ class AsyncSessionsResource(AsyncAPIResource):
             "/sessions",
             body=await async_maybe_transform(
                 {
+                    "dataset": dataset,
                     "sample_id": sample_id,
                     "ttl_minutes": ttl_minutes,
                 },
