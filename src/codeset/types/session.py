@@ -15,6 +15,9 @@ class Session(BaseModel):
     created_at: datetime
     """Timestamp when the session was created (UTC)."""
 
+    dataset: str
+    """Dataset name for the sample."""
+
     expires_at: datetime
     """Timestamp when the session will expire (UTC)."""
 
