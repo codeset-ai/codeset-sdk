@@ -148,7 +148,7 @@ Error codes are as follows:
 
 ### Retries
 
-Certain errors are automatically retried 2 times by default, with a short exponential backoff.
+Certain errors are automatically retried 0 times by default, with a short exponential backoff.
 Connection errors (for example, due to a network connectivity problem), 408 Request Timeout, 409 Conflict,
 429 Rate Limit, and >=500 Internal errors are all retried by default.
 
@@ -169,7 +169,7 @@ client.with_options(max_retries=5).health.check()
 
 ### Timeouts
 
-By default requests time out after 1 minute. You can configure this with a `timeout` option,
+By default requests time out after 5 minutes. You can configure this with a `timeout` option,
 which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/timeouts/#fine-tuning-the-configuration) object:
 
 ```python
@@ -177,7 +177,7 @@ from codeset import Codeset
 
 # Configure the default for all requests:
 client = Codeset(
-    # 20 seconds (default is 1 minute)
+    # 20 seconds (default is 5 minutes)
     timeout=20.0,
 )
 
