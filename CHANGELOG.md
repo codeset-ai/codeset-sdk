@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.7 (2025-07-02)
+
+Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/codeset-ai/codeset-sdk/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)
+
+### Features
+
+* **api:** api update ([bac9899](https://github.com/codeset-ai/codeset-sdk/commit/bac9899822b753e1ad7ee540255c83ea5565b2dd))
+
+
+### Chores
+
+* **ci:** change upload type ([51cfcf3](https://github.com/codeset-ai/codeset-sdk/commit/51cfcf3e1be332241d4d712b3296dcb13f0d57e6))
+
 ## 0.1.0-alpha.6 (2025-07-01)
 
 Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/codeset-ai/codeset-sdk/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
