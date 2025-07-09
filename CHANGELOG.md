@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.1.0-alpha.8 (2025-07-09)
+
+Full Changelog: [v0.1.0-alpha.7...v0.1.0-alpha.8](https://github.com/codeset-ai/codeset-sdk/compare/v0.1.0-alpha.7...v0.1.0-alpha.8)
+
+### Features
+
+* **api:** api update ([04610b6](https://github.com/codeset-ai/codeset-sdk/commit/04610b66b39f7c398cff96e3163ad47bb36cf735))
+* **api:** manual updates ([e185d63](https://github.com/codeset-ai/codeset-sdk/commit/e185d63f1df964dd9c26618fd9e23deebd5465e6))
+
+
+### Chores
+
+* **internal:** bump pinned h11 dep ([1ab8e71](https://github.com/codeset-ai/codeset-sdk/commit/1ab8e714da29dd57961a803f49dc29be1f006417))
+* **package:** mark python 3.13 as supported ([66e8118](https://github.com/codeset-ai/codeset-sdk/commit/66e811829d827dfa63a3c343738bc6268a5b4953))
+
 ## 0.1.0-alpha.7 (2025-07-02)
 
 Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/codeset-ai/codeset-sdk/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)

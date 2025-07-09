@@ -8,14 +8,8 @@ __all__ = ["ContainerInfo"]
 
 
 class ContainerInfo(BaseModel):
-    api_url: str
-    """URL of the container API."""
-
-    container_ip: str
-    """IP address of the container."""
-
     container_name: str
-    """Name of the container."""
+    """Name of the Cloud Run service."""
 
     created_at: datetime
     """Timestamp when the container was created (UTC)."""
@@ -25,6 +19,9 @@ class ContainerInfo(BaseModel):
 
     sample_id: str
     """Sample ID of the container."""
+
+    service_url: str
+    """URL of the Cloud Run service."""
 
     status: str
     """Status of the container."""
