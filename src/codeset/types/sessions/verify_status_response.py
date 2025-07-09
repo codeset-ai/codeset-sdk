@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, Optional
+from typing import Optional
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -30,9 +30,6 @@ class Result(BaseModel):
 
     total: int
     """Total number of tests executed."""
-
-    failures: Optional[Dict[str, object]] = None
-    """A dictionary of failed tests with their details."""
 
     tool: Optional[Literal["test_suite"]] = None
 
