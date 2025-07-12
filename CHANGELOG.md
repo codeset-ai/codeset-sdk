@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.1.0-alpha.10 (2025-07-12)
+
+Full Changelog: [v0.1.0-alpha.9...v0.1.0-alpha.10](https://github.com/codeset-ai/codeset-sdk/compare/v0.1.0-alpha.9...v0.1.0-alpha.10)
+
+### Features
+
+* **api:** api update ([0f7b0ed](https://github.com/codeset-ai/codeset-sdk/commit/0f7b0ed03db4cb5e6e7d0484e3aee128e70509c8))
+
+
+### Bug Fixes
+
+* **client:** don't send Content-Type header on GET requests ([10a9ffd](https://github.com/codeset-ai/codeset-sdk/commit/10a9ffd175b2837f6a880ab281369d95f3f5ba42))
+* **parsing:** correctly handle nested discriminated unions ([2f64896](https://github.com/codeset-ai/codeset-sdk/commit/2f64896ab114adb782cb349aabd8275e7ae48982))
+
+
+### Chores
+
+* **readme:** fix version rendering on pypi ([8743285](https://github.com/codeset-ai/codeset-sdk/commit/87432851bcbc016e6d3cab5a6388e72d0de2af72))
+
 ## 0.1.0-alpha.9 (2025-07-09)
 
 Full Changelog: [v0.1.0-alpha.8...v0.1.0-alpha.9](https://github.com/codeset-ai/codeset-sdk/compare/v0.1.0-alpha.8...v0.1.0-alpha.9)
