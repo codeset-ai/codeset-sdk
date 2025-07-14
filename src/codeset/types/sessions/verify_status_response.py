@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Optional
+from typing import List, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -28,11 +28,17 @@ class Result(BaseModel):
     skipped: int
     """Number of tests that were skipped."""
 
-    test_results: object
-    """Raw test results from the verifier."""
-
     total: int
     """Total number of tests executed."""
+
+    failures: Optional[List[object]] = None
+    """A list of failed tests with their details."""
+
+    stderr: Optional[str] = None
+    """Standard error from the verifier."""
+
+    stdout: Optional[str] = None
+    """Standard output from the verifier."""
 
     tool: Optional[Literal["test_suite"]] = None
 
