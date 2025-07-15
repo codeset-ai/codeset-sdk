@@ -79,7 +79,6 @@ pip install --pre codeset[aiohttp]
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
 
 ```python
-import os
 import asyncio
 from codeset import DefaultAioHttpClient
 from codeset import AsyncCodeset
@@ -87,7 +86,7 @@ from codeset import AsyncCodeset
 
 async def main() -> None:
     async with AsyncCodeset(
-        api_key=os.environ.get("CODESET_API_KEY"),  # This is the default and can be omitted
+        api_key="My API Key",
         http_client=DefaultAioHttpClient(),
     ) as client:
         response = await client.health.check()
