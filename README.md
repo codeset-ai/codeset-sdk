@@ -1,6 +1,7 @@
 # Codeset Python API library
 
-[![PyPI version](<https://img.shields.io/pypi/v/codeset.svg?label=pypi%20(stable)>)](https://pypi.org/project/codeset/)
+<!-- prettier-ignore -->
+[![PyPI version](https://img.shields.io/pypi/v/codeset.svg?label=pypi%20(stable))](https://pypi.org/project/codeset/)
 
 The Codeset Python library provides convenient access to the Codeset REST API from any Python 3.8+
 application. The library includes type definitions for all request params and response fields,
@@ -78,7 +79,6 @@ pip install --pre codeset[aiohttp]
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
 
 ```python
-import os
 import asyncio
 from codeset import DefaultAioHttpClient
 from codeset import AsyncCodeset
@@ -86,7 +86,7 @@ from codeset import AsyncCodeset
 
 async def main() -> None:
     async with AsyncCodeset(
-        api_key=os.environ.get("CODESET_API_KEY"),  # This is the default and can be omitted
+        api_key="My API Key",
         http_client=DefaultAioHttpClient(),
     ) as client:
         response = await client.health.check()

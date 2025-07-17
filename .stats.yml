@@ -1,4 +1,4 @@
 configured_endpoints: 11
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/codeset%2Fcodeset-b03c4279e9c20df7f156816c6f98b570cba97a90549691a300abb308c1aa40ed.yml
-openapi_spec_hash: 7aebdaa5310d12d5a7b00ed155dea54f
-config_hash: 163a9e0369fd8e7341590fd69743dc82
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/codeset%2Fcodeset-55ff72147233e3c1f58a310f3f606d6214c9b91dbb2d297348a0740c3a7a807b.yml
+openapi_spec_hash: 0efb16b4a0e617bb8814374b1feefe6e
+config_hash: e403ab76c7f14022a137798fe9d5a892
