@@ -79,7 +79,7 @@ class Codeset(SyncAPIClient):
         if base_url is None:
             base_url = os.environ.get("CODESET_BASE_URL")
         if base_url is None:
-            base_url = f"/api/v1"
+            base_url = f"https://api.codeset.ai/api/v1/"
 
         super().__init__(
             version=__version__,
@@ -260,7 +260,7 @@ class AsyncCodeset(AsyncAPIClient):
         if base_url is None:
             base_url = os.environ.get("CODESET_BASE_URL")
         if base_url is None:
-            base_url = f"/api/v1"
+            base_url = f"https://api.codeset.ai/api/v1/"
 
         super().__init__(
             version=__version__,
