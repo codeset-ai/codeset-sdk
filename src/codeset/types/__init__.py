@@ -13,7 +13,5 @@ from .session_list_response import SessionListResponse as SessionListResponse
 from .sample_download_params import SampleDownloadParams as SampleDownloadParams
 from .session_close_response import SessionCloseResponse as SessionCloseResponse
 from .session_create_response import SessionCreateResponse as SessionCreateResponse
-from .session_apply_diff_params import SessionApplyDiffParams as SessionApplyDiffParams
-from .session_apply_diff_response import SessionApplyDiffResponse as SessionApplyDiffResponse
 from .session_execute_command_params import SessionExecuteCommandParams as SessionExecuteCommandParams
 from .session_execute_command_response import SessionExecuteCommandResponse as SessionExecuteCommandResponse

@@ -4,4 +4,4 @@ from typing_extensions import Literal, TypeAlias
 
 __all__ = ["JobStatus"]
 
-JobStatus: TypeAlias = Literal["pending", "starting", "applying_diff", "running", "completed", "error", "cancelled"]
+JobStatus: TypeAlias = Literal["pending", "starting", "running", "completed", "error", "cancelled"]
