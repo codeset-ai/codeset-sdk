@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.1.0-alpha.12 (2025-07-23)
+
+Full Changelog: [v0.1.0-alpha.11...v0.1.0-alpha.12](https://github.com/codeset-ai/codeset-sdk/compare/v0.1.0-alpha.11...v0.1.0-alpha.12)
+
+### Features
+
+* **api:** api update ([f967221](https://github.com/codeset-ai/codeset-sdk/commit/f967221ede186215eac4438fd42013ae45758645))
+* **api:** manual updates ([abe522a](https://github.com/codeset-ai/codeset-sdk/commit/abe522a3197a58bf8529df02f7959edc05b38e10))
+
+
+### Bug Fixes
+
+* **parsing:** ignore empty metadata ([e06bcfc](https://github.com/codeset-ai/codeset-sdk/commit/e06bcfce4747daad7ebe9db900b5f8f737f22354))
+* **parsing:** parse extra field types ([3b16904](https://github.com/codeset-ai/codeset-sdk/commit/3b169046c797a7cbe98f9dc8b543921dffca5c21))
+
 ## 0.1.0-alpha.11 (2025-07-20)
 
 Full Changelog: [v0.1.0-alpha.10...v0.1.0-alpha.11](https://github.com/codeset-ai/codeset-sdk/compare/v0.1.0-alpha.10...v0.1.0-alpha.11)
