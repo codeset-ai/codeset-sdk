@@ -35,7 +35,6 @@ from codeset.types import (
     SessionStatus,
     SessionCreateResponse,
     SessionListResponse,
-    SessionApplyDiffResponse,
     SessionCloseResponse,
     SessionExecuteCommandResponse,
 )
@@ -46,7 +45,6 @@ Methods:
 - <code title="post /sessions">client.sessions.<a href="./src/codeset/resources/sessions/sessions.py">create</a>(\*\*<a href="src/codeset/types/session_create_params.py">params</a>) -> <a href="./src/codeset/types/session_create_response.py">SessionCreateResponse</a></code>
 - <code title="get /sessions/{session_id}">client.sessions.<a href="./src/codeset/resources/sessions/sessions.py">retrieve</a>(session_id) -> <a href="./src/codeset/types/session.py">Session</a></code>
 - <code title="get /sessions">client.sessions.<a href="./src/codeset/resources/sessions/sessions.py">list</a>() -> <a href="./src/codeset/types/session_list_response.py">SessionListResponse</a></code>
-- <code title="post /sessions/{session_id}/apply">client.sessions.<a href="./src/codeset/resources/sessions/sessions.py">apply_diff</a>(session_id, \*\*<a href="src/codeset/types/session_apply_diff_params.py">params</a>) -> <a href="./src/codeset/types/session_apply_diff_response.py">SessionApplyDiffResponse</a></code>
 - <code title="delete /sessions/{session_id}">client.sessions.<a href="./src/codeset/resources/sessions/sessions.py">close</a>(session_id) -> <a href="./src/codeset/types/session_close_response.py">SessionCloseResponse</a></code>
 - <code title="post /sessions/{session_id}/exec">client.sessions.<a href="./src/codeset/resources/sessions/sessions.py">execute_command</a>(session_id, \*\*<a href="src/codeset/types/session_execute_command_params.py">params</a>) -> <a href="./src/codeset/types/session_execute_command_response.py">SessionExecuteCommandResponse</a></code>
 

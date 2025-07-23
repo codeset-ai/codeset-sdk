@@ -12,7 +12,7 @@ from .verify import (
     VerifyResourceWithStreamingResponse,
     AsyncVerifyResourceWithStreamingResponse,
 )
-from ...types import session_create_params, session_apply_diff_params, session_execute_command_params
+from ...types import session_create_params, session_execute_command_params
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
@@ -28,7 +28,6 @@ from ...types.session import Session
 from ...types.session_list_response import SessionListResponse
 from ...types.session_close_response import SessionCloseResponse
 from ...types.session_create_response import SessionCreateResponse
-from ...types.session_apply_diff_response import SessionApplyDiffResponse
 from ...types.session_execute_command_response import SessionExecuteCommandResponse
 
 __all__ = ["SessionsResource", "AsyncSessionsResource"]
@@ -155,43 +154,6 @@ class SessionsResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=SessionListResponse,
-        )
-
-    def apply_diff(
-        self,
-        session_id: str,
-        *,
-        diff: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SessionApplyDiffResponse:
-        """
-        Apply a diff in an environment
-
-        Args:
-          diff: The diff to be applied, in unified format.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not session_id:
-            raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
-        return self._post(
-            f"/sessions/{session_id}/apply",
-            body=maybe_transform({"diff": diff}, session_apply_diff_params.SessionApplyDiffParams),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=SessionApplyDiffResponse,
         )
 
     def close(
@@ -397,43 +359,6 @@ class AsyncSessionsResource(AsyncAPIResource):
             cast_to=SessionListResponse,
         )
 
-    async def apply_diff(
-        self,
-        session_id: str,
-        *,
-        diff: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SessionApplyDiffResponse:
-        """
-        Apply a diff in an environment
-
-        Args:
-          diff: The diff to be applied, in unified format.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not session_id:
-            raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
-        return await self._post(
-            f"/sessions/{session_id}/apply",
-            body=await async_maybe_transform({"diff": diff}, session_apply_diff_params.SessionApplyDiffParams),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=SessionApplyDiffResponse,
-        )
-
     async def close(
         self,
         session_id: str,
@@ -527,9 +452,6 @@ class SessionsResourceWithRawResponse:
         self.list = to_raw_response_wrapper(
             sessions.list,
         )
-        self.apply_diff = to_raw_response_wrapper(
-            sessions.apply_diff,
-        )
         self.close = to_raw_response_wrapper(
             sessions.close,
         )
@@ -554,9 +476,6 @@ class AsyncSessionsResourceWithRawResponse:
         )
         self.list = async_to_raw_response_wrapper(
             sessions.list,
-        )
-        self.apply_diff = async_to_raw_response_wrapper(
-            sessions.apply_diff,
         )
         self.close = async_to_raw_response_wrapper(
             sessions.close,
@@ -583,9 +502,6 @@ class SessionsResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             sessions.list,
         )
-        self.apply_diff = to_streamed_response_wrapper(
-            sessions.apply_diff,
-        )
         self.close = to_streamed_response_wrapper(
             sessions.close,
         )
@@ -610,9 +526,6 @@ class AsyncSessionsResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             sessions.list,
-        )
-        self.apply_diff = async_to_streamed_response_wrapper(
-            sessions.apply_diff,
         )
         self.close = async_to_streamed_response_wrapper(
             sessions.close,

@@ -14,7 +14,6 @@ from codeset.types import (
     SessionListResponse,
     SessionCloseResponse,
     SessionCreateResponse,
-    SessionApplyDiffResponse,
     SessionExecuteCommandResponse,
 )
 
@@ -140,52 +139,6 @@ class TestSessions:
             assert_matches_type(SessionListResponse, session, path=["response"])
 
         assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_method_apply_diff(self, client: Codeset) -> None:
-        session = client.sessions.apply_diff(
-            session_id="session_id",
-            diff="diff",
-        )
-        assert_matches_type(SessionApplyDiffResponse, session, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_raw_response_apply_diff(self, client: Codeset) -> None:
-        response = client.sessions.with_raw_response.apply_diff(
-            session_id="session_id",
-            diff="diff",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        session = response.parse()
-        assert_matches_type(SessionApplyDiffResponse, session, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_streaming_response_apply_diff(self, client: Codeset) -> None:
-        with client.sessions.with_streaming_response.apply_diff(
-            session_id="session_id",
-            diff="diff",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            session = response.parse()
-            assert_matches_type(SessionApplyDiffResponse, session, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_path_params_apply_diff(self, client: Codeset) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
-            client.sessions.with_raw_response.apply_diff(
-                session_id="",
-                diff="diff",
-            )
 
     @pytest.mark.skip()
     @parametrize
@@ -407,52 +360,6 @@ class TestAsyncSessions:
             assert_matches_type(SessionListResponse, session, path=["response"])
 
         assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_method_apply_diff(self, async_client: AsyncCodeset) -> None:
-        session = await async_client.sessions.apply_diff(
-            session_id="session_id",
-            diff="diff",
-        )
-        assert_matches_type(SessionApplyDiffResponse, session, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_raw_response_apply_diff(self, async_client: AsyncCodeset) -> None:
-        response = await async_client.sessions.with_raw_response.apply_diff(
-            session_id="session_id",
-            diff="diff",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        session = await response.parse()
-        assert_matches_type(SessionApplyDiffResponse, session, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_streaming_response_apply_diff(self, async_client: AsyncCodeset) -> None:
-        async with async_client.sessions.with_streaming_response.apply_diff(
-            session_id="session_id",
-            diff="diff",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            session = await response.parse()
-            assert_matches_type(SessionApplyDiffResponse, session, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_path_params_apply_diff(self, async_client: AsyncCodeset) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
-            await async_client.sessions.with_raw_response.apply_diff(
-                session_id="",
-                diff="diff",
-            )
 
     @pytest.mark.skip()
     @parametrize
