@@ -14,6 +14,7 @@ from codeset.types import (
     SessionListResponse,
     SessionCloseResponse,
     SessionCreateResponse,
+    SessionStrReplaceResponse,
     SessionExecuteCommandResponse,
 )
 
@@ -238,6 +239,60 @@ class TestSessions:
                 command="command",
             )
 
+    @pytest.mark.skip()
+    @parametrize
+    def test_method_str_replace(self, client: Codeset) -> None:
+        session = client.sessions.str_replace(
+            session_id="session_id",
+            file_path="file_path",
+            str_to_insert="str_to_insert",
+            str_to_replace="str_to_replace",
+        )
+        assert_matches_type(SessionStrReplaceResponse, session, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_raw_response_str_replace(self, client: Codeset) -> None:
+        response = client.sessions.with_raw_response.str_replace(
+            session_id="session_id",
+            file_path="file_path",
+            str_to_insert="str_to_insert",
+            str_to_replace="str_to_replace",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        session = response.parse()
+        assert_matches_type(SessionStrReplaceResponse, session, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_streaming_response_str_replace(self, client: Codeset) -> None:
+        with client.sessions.with_streaming_response.str_replace(
+            session_id="session_id",
+            file_path="file_path",
+            str_to_insert="str_to_insert",
+            str_to_replace="str_to_replace",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            session = response.parse()
+            assert_matches_type(SessionStrReplaceResponse, session, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_path_params_str_replace(self, client: Codeset) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
+            client.sessions.with_raw_response.str_replace(
+                session_id="",
+                file_path="file_path",
+                str_to_insert="str_to_insert",
+                str_to_replace="str_to_replace",
+            )
+
 
 class TestAsyncSessions:
     parametrize = pytest.mark.parametrize(
@@ -457,4 +512,58 @@ class TestAsyncSessions:
             await async_client.sessions.with_raw_response.execute_command(
                 session_id="",
                 command="command",
+            )
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_method_str_replace(self, async_client: AsyncCodeset) -> None:
+        session = await async_client.sessions.str_replace(
+            session_id="session_id",
+            file_path="file_path",
+            str_to_insert="str_to_insert",
+            str_to_replace="str_to_replace",
+        )
+        assert_matches_type(SessionStrReplaceResponse, session, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_raw_response_str_replace(self, async_client: AsyncCodeset) -> None:
+        response = await async_client.sessions.with_raw_response.str_replace(
+            session_id="session_id",
+            file_path="file_path",
+            str_to_insert="str_to_insert",
+            str_to_replace="str_to_replace",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        session = await response.parse()
+        assert_matches_type(SessionStrReplaceResponse, session, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_streaming_response_str_replace(self, async_client: AsyncCodeset) -> None:
+        async with async_client.sessions.with_streaming_response.str_replace(
+            session_id="session_id",
+            file_path="file_path",
+            str_to_insert="str_to_insert",
+            str_to_replace="str_to_replace",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            session = await response.parse()
+            assert_matches_type(SessionStrReplaceResponse, session, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_path_params_str_replace(self, async_client: AsyncCodeset) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
+            await async_client.sessions.with_raw_response.str_replace(
+                session_id="",
+                file_path="file_path",
+                str_to_insert="str_to_insert",
+                str_to_replace="str_to_replace",
             )

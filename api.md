@@ -37,6 +37,7 @@ from codeset.types import (
     SessionListResponse,
     SessionCloseResponse,
     SessionExecuteCommandResponse,
+    SessionStrReplaceResponse,
 )
 ```
 
@@ -47,6 +48,7 @@ Methods:
 - <code title="get /sessions">client.sessions.<a href="./src/codeset/resources/sessions/sessions.py">list</a>() -> <a href="./src/codeset/types/session_list_response.py">SessionListResponse</a></code>
 - <code title="delete /sessions/{session_id}">client.sessions.<a href="./src/codeset/resources/sessions/sessions.py">close</a>(session_id) -> <a href="./src/codeset/types/session_close_response.py">SessionCloseResponse</a></code>
 - <code title="post /sessions/{session_id}/exec">client.sessions.<a href="./src/codeset/resources/sessions/sessions.py">execute_command</a>(session_id, \*\*<a href="src/codeset/types/session_execute_command_params.py">params</a>) -> <a href="./src/codeset/types/session_execute_command_response.py">SessionExecuteCommandResponse</a></code>
+- <code title="post /sessions/{session_id}/str_replace">client.sessions.<a href="./src/codeset/resources/sessions/sessions.py">str_replace</a>(session_id, \*\*<a href="src/codeset/types/session_str_replace_params.py">params</a>) -> <a href="./src/codeset/types/session_str_replace_response.py">SessionStrReplaceResponse</a></code>
 
 ## Verify
 
