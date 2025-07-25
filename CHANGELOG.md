@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.13 (2025-07-25)
+
+Full Changelog: [v0.1.0-alpha.12...v0.1.0-alpha.13](https://github.com/codeset-ai/codeset-sdk/compare/v0.1.0-alpha.12...v0.1.0-alpha.13)
+
+### Chores
+
+* **project:** add settings file for vscode ([31f4a90](https://github.com/codeset-ai/codeset-sdk/commit/31f4a909e7e7e9699a47c15c9cbee3536929e512))
+
 ## 0.1.0-alpha.12 (2025-07-23)
 
 Full Changelog: [v0.1.0-alpha.11...v0.1.0-alpha.12](https://github.com/codeset-ai/codeset-sdk/compare/v0.1.0-alpha.11...v0.1.0-alpha.12)
