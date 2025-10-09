@@ -6,7 +6,7 @@ from typing import Optional
 
 import httpx
 
-from ..types import sample_download_params
+from ..types import sample_list_params, sample_download_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -46,6 +46,7 @@ class SamplesResource(SyncAPIResource):
     def list(
         self,
         *,
+        dataset: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -53,11 +54,28 @@ class SamplesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SampleListResponse:
-        """List available samples"""
+        """
+        List available samples, optionally filtered by dataset
+
+        Args:
+          dataset: Filter samples by dataset name
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             "/samples",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"dataset": dataset}, sample_list_params.SampleListParams),
             ),
             cast_to=SampleListResponse,
         )
@@ -127,6 +145,7 @@ class AsyncSamplesResource(AsyncAPIResource):
     async def list(
         self,
         *,
+        dataset: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -134,11 +153,28 @@ class AsyncSamplesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SampleListResponse:
-        """List available samples"""
+        """
+        List available samples, optionally filtered by dataset
+
+        Args:
+          dataset: Filter samples by dataset name
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             "/samples",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"dataset": dataset}, sample_list_params.SampleListParams),
             ),
             cast_to=SampleListResponse,
         )

@@ -6,6 +6,7 @@ from .session import Session as Session
 from .error_info import ErrorInfo as ErrorInfo
 from .container_info import ContainerInfo as ContainerInfo
 from .session_status import SessionStatus as SessionStatus
+from .sample_list_params import SampleListParams as SampleListParams
 from .sample_list_response import SampleListResponse as SampleListResponse
 from .health_check_response import HealthCheckResponse as HealthCheckResponse
 from .session_create_params import SessionCreateParams as SessionCreateParams

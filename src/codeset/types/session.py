@@ -33,6 +33,9 @@ class Session(BaseModel):
     status: SessionStatus
     """Current status of the session."""
 
+    user_id: str
+    """User ID who owns this session."""
+
     container_info: Optional[ContainerInfo] = None
     """Information about a container."""
 

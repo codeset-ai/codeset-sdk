@@ -25,6 +25,14 @@ class TestSamples:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
+    def test_method_list_with_all_params(self, client: Codeset) -> None:
+        sample = client.samples.list(
+            dataset="dataset",
+        )
+        assert_matches_type(SampleListResponse, sample, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
     def test_raw_response_list(self, client: Codeset) -> None:
         response = client.samples.with_raw_response.list()
 
@@ -117,6 +125,14 @@ class TestAsyncSamples:
     @parametrize
     async def test_method_list(self, async_client: AsyncCodeset) -> None:
         sample = await async_client.samples.list()
+        assert_matches_type(SampleListResponse, sample, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncCodeset) -> None:
+        sample = await async_client.samples.list(
+            dataset="dataset",
+        )
         assert_matches_type(SampleListResponse, sample, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")
