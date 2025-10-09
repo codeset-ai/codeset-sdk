@@ -1,5 +1,37 @@
 # Changelog
 
+## 0.1.0-alpha.14 (2025-10-09)
+
+Full Changelog: [v0.1.0-alpha.13...v0.1.0-alpha.14](https://github.com/codeset-ai/codeset-sdk/compare/v0.1.0-alpha.13...v0.1.0-alpha.14)
+
+### Features
+
+* **api:** api update ([b6ae1e4](https://github.com/codeset-ai/codeset-sdk/commit/b6ae1e422ff911f8f5cf79662238edd487be3c8b))
+* improve future compat with pydantic v3 ([b987901](https://github.com/codeset-ai/codeset-sdk/commit/b9879013868363f7fb8550dd0e9aecfdd121dd71))
+* **types:** replace List[str] with SequenceNotStr in params ([e66585e](https://github.com/codeset-ai/codeset-sdk/commit/e66585e6292e1a7b9213007700830027ea14902b))
+
+
+### Bug Fixes
+
+* avoid newer type syntax ([e1f6c99](https://github.com/codeset-ai/codeset-sdk/commit/e1f6c990fc5bc4881066a4c34b4b8ad678ce7ee6))
+
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([ba313c2](https://github.com/codeset-ai/codeset-sdk/commit/ba313c2dbd4f9f78fe65055d1f5a0d9fccb3b1a9))
+* **internal:** add Sequence related utils ([1c138c5](https://github.com/codeset-ai/codeset-sdk/commit/1c138c599956cac4963c88bffe794671c7c48e34))
+* **internal:** change ci workflow machines ([b394c99](https://github.com/codeset-ai/codeset-sdk/commit/b394c997d82a77c247f836bd3971f3e72cf65754))
+* **internal:** codegen related update ([7920ab8](https://github.com/codeset-ai/codeset-sdk/commit/7920ab8bddc81b691941e72035dee53378687fe2))
+* **internal:** fix ruff target version ([ca3fb98](https://github.com/codeset-ai/codeset-sdk/commit/ca3fb983d4369ac2590309f82d6e6139b612bbbd))
+* **internal:** move mypy configurations to `pyproject.toml` file ([0291768](https://github.com/codeset-ai/codeset-sdk/commit/02917689405adc9ea8733caa64cd21a9d344a95a))
+* **internal:** update comment in script ([0e878ee](https://github.com/codeset-ai/codeset-sdk/commit/0e878ee55035ba152f235230d6e0d8235c671000))
+* **internal:** update pydantic dependency ([cf3d9ef](https://github.com/codeset-ai/codeset-sdk/commit/cf3d9efbe0ec2d5a56bb38b5a55e835a772e2cb8))
+* **internal:** update pyright exclude list ([012ed02](https://github.com/codeset-ai/codeset-sdk/commit/012ed02d18e581c55fd6aad400db8165ca44b0b6))
+* **tests:** simplify `get_platform` test ([b6dc1e5](https://github.com/codeset-ai/codeset-sdk/commit/b6dc1e5f48b09d44ad0561089cfccb839a52c590))
+* **types:** change optional parameter type from NotGiven to Omit ([030c521](https://github.com/codeset-ai/codeset-sdk/commit/030c521a4cedac4cb98d2cf324f3196f9d771a8b))
+* update @stainless-api/prism-cli to v5.15.0 ([aefef64](https://github.com/codeset-ai/codeset-sdk/commit/aefef64d5c4d4b9cae7fd89b593734d7a4c173c5))
+* update github action ([9b84ce1](https://github.com/codeset-ai/codeset-sdk/commit/9b84ce19164583a2df871deb9ec8c4cdd55940a0))
+
 ## 0.1.0-alpha.13 (2025-07-31)
 
 Full Changelog: [v0.1.0-alpha.12...v0.1.0-alpha.13](https://github.com/codeset-ai/codeset-sdk/compare/v0.1.0-alpha.12...v0.1.0-alpha.13)
