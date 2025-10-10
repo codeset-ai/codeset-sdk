@@ -13,7 +13,7 @@ from .verify import (
     AsyncVerifyResourceWithStreamingResponse,
 )
 from ...types import session_create_params, session_str_replace_params, session_execute_command_params
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -63,13 +63,13 @@ class SessionsResource(SyncAPIResource):
         *,
         dataset: str,
         sample_id: str,
-        ttl_minutes: int | NotGiven = NOT_GIVEN,
+        ttl_minutes: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SessionCreateResponse:
         """
         Create a new session
@@ -114,7 +114,7 @@ class SessionsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Session:
         """
         Get session details
@@ -146,7 +146,7 @@ class SessionsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SessionListResponse:
         """List environment sessions"""
         return self._get(
@@ -166,7 +166,7 @@ class SessionsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SessionCloseResponse:
         """
         Close/delete an environment session
@@ -195,13 +195,13 @@ class SessionsResource(SyncAPIResource):
         session_id: str,
         *,
         command: str,
-        command_timeout: int | NotGiven = NOT_GIVEN,
+        command_timeout: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SessionExecuteCommandResponse:
         """
         Execute a bash command in an environment
@@ -248,7 +248,7 @@ class SessionsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SessionStrReplaceResponse:
         """
         Replace a string in a file within the session environment
@@ -316,13 +316,13 @@ class AsyncSessionsResource(AsyncAPIResource):
         *,
         dataset: str,
         sample_id: str,
-        ttl_minutes: int | NotGiven = NOT_GIVEN,
+        ttl_minutes: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SessionCreateResponse:
         """
         Create a new session
@@ -367,7 +367,7 @@ class AsyncSessionsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Session:
         """
         Get session details
@@ -399,7 +399,7 @@ class AsyncSessionsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SessionListResponse:
         """List environment sessions"""
         return await self._get(
@@ -419,7 +419,7 @@ class AsyncSessionsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SessionCloseResponse:
         """
         Close/delete an environment session
@@ -448,13 +448,13 @@ class AsyncSessionsResource(AsyncAPIResource):
         session_id: str,
         *,
         command: str,
-        command_timeout: int | NotGiven = NOT_GIVEN,
+        command_timeout: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SessionExecuteCommandResponse:
         """
         Execute a bash command in an environment
@@ -501,7 +501,7 @@ class AsyncSessionsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SessionStrReplaceResponse:
         """
         Replace a string in a file within the session environment

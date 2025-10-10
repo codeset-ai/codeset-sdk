@@ -24,7 +24,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestSessions:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create(self, client: Codeset) -> None:
         session = client.sessions.create(
@@ -33,7 +33,7 @@ class TestSessions:
         )
         assert_matches_type(SessionCreateResponse, session, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create_with_all_params(self, client: Codeset) -> None:
         session = client.sessions.create(
@@ -43,7 +43,7 @@ class TestSessions:
         )
         assert_matches_type(SessionCreateResponse, session, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: Codeset) -> None:
         response = client.sessions.with_raw_response.create(
@@ -56,7 +56,7 @@ class TestSessions:
         session = response.parse()
         assert_matches_type(SessionCreateResponse, session, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_create(self, client: Codeset) -> None:
         with client.sessions.with_streaming_response.create(
@@ -71,7 +71,7 @@ class TestSessions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_retrieve(self, client: Codeset) -> None:
         session = client.sessions.retrieve(
@@ -79,7 +79,7 @@ class TestSessions:
         )
         assert_matches_type(Session, session, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_retrieve(self, client: Codeset) -> None:
         response = client.sessions.with_raw_response.retrieve(
@@ -91,7 +91,7 @@ class TestSessions:
         session = response.parse()
         assert_matches_type(Session, session, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_retrieve(self, client: Codeset) -> None:
         with client.sessions.with_streaming_response.retrieve(
@@ -105,7 +105,7 @@ class TestSessions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_retrieve(self, client: Codeset) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
@@ -113,13 +113,13 @@ class TestSessions:
                 "",
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_list(self, client: Codeset) -> None:
         session = client.sessions.list()
         assert_matches_type(SessionListResponse, session, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: Codeset) -> None:
         response = client.sessions.with_raw_response.list()
@@ -129,7 +129,7 @@ class TestSessions:
         session = response.parse()
         assert_matches_type(SessionListResponse, session, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: Codeset) -> None:
         with client.sessions.with_streaming_response.list() as response:
@@ -141,7 +141,7 @@ class TestSessions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_close(self, client: Codeset) -> None:
         session = client.sessions.close(
@@ -149,7 +149,7 @@ class TestSessions:
         )
         assert_matches_type(SessionCloseResponse, session, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_close(self, client: Codeset) -> None:
         response = client.sessions.with_raw_response.close(
@@ -161,7 +161,7 @@ class TestSessions:
         session = response.parse()
         assert_matches_type(SessionCloseResponse, session, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_close(self, client: Codeset) -> None:
         with client.sessions.with_streaming_response.close(
@@ -175,7 +175,7 @@ class TestSessions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_close(self, client: Codeset) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
@@ -183,7 +183,7 @@ class TestSessions:
                 "",
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_execute_command(self, client: Codeset) -> None:
         session = client.sessions.execute_command(
@@ -192,7 +192,7 @@ class TestSessions:
         )
         assert_matches_type(SessionExecuteCommandResponse, session, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_execute_command_with_all_params(self, client: Codeset) -> None:
         session = client.sessions.execute_command(
@@ -202,7 +202,7 @@ class TestSessions:
         )
         assert_matches_type(SessionExecuteCommandResponse, session, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_execute_command(self, client: Codeset) -> None:
         response = client.sessions.with_raw_response.execute_command(
@@ -215,7 +215,7 @@ class TestSessions:
         session = response.parse()
         assert_matches_type(SessionExecuteCommandResponse, session, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_execute_command(self, client: Codeset) -> None:
         with client.sessions.with_streaming_response.execute_command(
@@ -230,7 +230,7 @@ class TestSessions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_execute_command(self, client: Codeset) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
@@ -239,7 +239,7 @@ class TestSessions:
                 command="command",
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_str_replace(self, client: Codeset) -> None:
         session = client.sessions.str_replace(
@@ -250,7 +250,7 @@ class TestSessions:
         )
         assert_matches_type(SessionStrReplaceResponse, session, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_str_replace(self, client: Codeset) -> None:
         response = client.sessions.with_raw_response.str_replace(
@@ -265,7 +265,7 @@ class TestSessions:
         session = response.parse()
         assert_matches_type(SessionStrReplaceResponse, session, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_str_replace(self, client: Codeset) -> None:
         with client.sessions.with_streaming_response.str_replace(
@@ -282,7 +282,7 @@ class TestSessions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_str_replace(self, client: Codeset) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
@@ -299,7 +299,7 @@ class TestAsyncSessions:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create(self, async_client: AsyncCodeset) -> None:
         session = await async_client.sessions.create(
@@ -308,7 +308,7 @@ class TestAsyncSessions:
         )
         assert_matches_type(SessionCreateResponse, session, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncCodeset) -> None:
         session = await async_client.sessions.create(
@@ -318,7 +318,7 @@ class TestAsyncSessions:
         )
         assert_matches_type(SessionCreateResponse, session, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncCodeset) -> None:
         response = await async_client.sessions.with_raw_response.create(
@@ -331,7 +331,7 @@ class TestAsyncSessions:
         session = await response.parse()
         assert_matches_type(SessionCreateResponse, session, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncCodeset) -> None:
         async with async_client.sessions.with_streaming_response.create(
@@ -346,7 +346,7 @@ class TestAsyncSessions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncCodeset) -> None:
         session = await async_client.sessions.retrieve(
@@ -354,7 +354,7 @@ class TestAsyncSessions:
         )
         assert_matches_type(Session, session, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncCodeset) -> None:
         response = await async_client.sessions.with_raw_response.retrieve(
@@ -366,7 +366,7 @@ class TestAsyncSessions:
         session = await response.parse()
         assert_matches_type(Session, session, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncCodeset) -> None:
         async with async_client.sessions.with_streaming_response.retrieve(
@@ -380,7 +380,7 @@ class TestAsyncSessions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_retrieve(self, async_client: AsyncCodeset) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
@@ -388,13 +388,13 @@ class TestAsyncSessions:
                 "",
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncCodeset) -> None:
         session = await async_client.sessions.list()
         assert_matches_type(SessionListResponse, session, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncCodeset) -> None:
         response = await async_client.sessions.with_raw_response.list()
@@ -404,7 +404,7 @@ class TestAsyncSessions:
         session = await response.parse()
         assert_matches_type(SessionListResponse, session, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncCodeset) -> None:
         async with async_client.sessions.with_streaming_response.list() as response:
@@ -416,7 +416,7 @@ class TestAsyncSessions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_close(self, async_client: AsyncCodeset) -> None:
         session = await async_client.sessions.close(
@@ -424,7 +424,7 @@ class TestAsyncSessions:
         )
         assert_matches_type(SessionCloseResponse, session, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_close(self, async_client: AsyncCodeset) -> None:
         response = await async_client.sessions.with_raw_response.close(
@@ -436,7 +436,7 @@ class TestAsyncSessions:
         session = await response.parse()
         assert_matches_type(SessionCloseResponse, session, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_close(self, async_client: AsyncCodeset) -> None:
         async with async_client.sessions.with_streaming_response.close(
@@ -450,7 +450,7 @@ class TestAsyncSessions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_close(self, async_client: AsyncCodeset) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
@@ -458,7 +458,7 @@ class TestAsyncSessions:
                 "",
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_execute_command(self, async_client: AsyncCodeset) -> None:
         session = await async_client.sessions.execute_command(
@@ -467,7 +467,7 @@ class TestAsyncSessions:
         )
         assert_matches_type(SessionExecuteCommandResponse, session, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_execute_command_with_all_params(self, async_client: AsyncCodeset) -> None:
         session = await async_client.sessions.execute_command(
@@ -477,7 +477,7 @@ class TestAsyncSessions:
         )
         assert_matches_type(SessionExecuteCommandResponse, session, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_execute_command(self, async_client: AsyncCodeset) -> None:
         response = await async_client.sessions.with_raw_response.execute_command(
@@ -490,7 +490,7 @@ class TestAsyncSessions:
         session = await response.parse()
         assert_matches_type(SessionExecuteCommandResponse, session, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_execute_command(self, async_client: AsyncCodeset) -> None:
         async with async_client.sessions.with_streaming_response.execute_command(
@@ -505,7 +505,7 @@ class TestAsyncSessions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_execute_command(self, async_client: AsyncCodeset) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
@@ -514,7 +514,7 @@ class TestAsyncSessions:
                 command="command",
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_str_replace(self, async_client: AsyncCodeset) -> None:
         session = await async_client.sessions.str_replace(
@@ -525,7 +525,7 @@ class TestAsyncSessions:
         )
         assert_matches_type(SessionStrReplaceResponse, session, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_str_replace(self, async_client: AsyncCodeset) -> None:
         response = await async_client.sessions.with_raw_response.str_replace(
@@ -540,7 +540,7 @@ class TestAsyncSessions:
         session = await response.parse()
         assert_matches_type(SessionStrReplaceResponse, session, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_str_replace(self, async_client: AsyncCodeset) -> None:
         async with async_client.sessions.with_streaming_response.str_replace(
@@ -557,7 +557,7 @@ class TestAsyncSessions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_str_replace(self, async_client: AsyncCodeset) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
