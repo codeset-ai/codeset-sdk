@@ -12,17 +12,14 @@ __all__ = ["Session"]
 
 
 class Session(BaseModel):
-    created_at: datetime
-    """Timestamp when the session was created (UTC)."""
-
     dataset: str
     """Dataset name for the sample."""
 
     expires_at: datetime
     """Timestamp when the session will expire (UTC)."""
 
-    last_activity_at: datetime
-    """Timestamp of last activity in the session (UTC)."""
+    requested_at: datetime
+    """Timestamp when the session was requested (UTC)."""
 
     sample_id: str
     """Identifier of the sample being used for the session."""
@@ -39,8 +36,11 @@ class Session(BaseModel):
     container_info: Optional[ContainerInfo] = None
     """Information about a container."""
 
+    created_at: Optional[datetime] = None
+    """Timestamp when the container became ready and billing started (UTC)."""
+
     duration_seconds: Optional[float] = None
-    """Current duration of the session in seconds."""
+    """Duration of the session in seconds."""
 
     error: Optional[ErrorInfo] = None
     """Details about an error that occurred during job processing."""
