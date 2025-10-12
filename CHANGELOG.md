@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.15 (2025-10-12)
+
+Full Changelog: [v0.1.0-alpha.14...v0.1.0-alpha.15](https://github.com/codeset-ai/codeset-sdk/compare/v0.1.0-alpha.14...v0.1.0-alpha.15)
+
+### Features
+
+* **api:** api update ([5702291](https://github.com/codeset-ai/codeset-sdk/commit/57022916e6234eac846b7d87cf9ad85c03f5160b))
+
+
+### Chores
+
+* **internal:** detect missing future annotations with ruff ([ea93b93](https://github.com/codeset-ai/codeset-sdk/commit/ea93b933bb3bf2faff4a5f67743f4ace8a1ac45b))
+
 ## 0.1.0-alpha.14 (2025-10-09)
 
 Full Changelog: [v0.1.0-alpha.13...v0.1.0-alpha.14](https://github.com/codeset-ai/codeset-sdk/compare/v0.1.0-alpha.13...v0.1.0-alpha.14)
