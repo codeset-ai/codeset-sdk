@@ -23,6 +23,18 @@ Methods:
 - <code title="get /samples">client.samples.<a href="./src/codeset/resources/samples.py">list</a>(\*\*<a href="src/codeset/types/sample_list_params.py">params</a>) -> <a href="./src/codeset/types/sample_list_response.py">SampleListResponse</a></code>
 - <code title="get /samples/{dataset}/{sample_id}/download">client.samples.<a href="./src/codeset/resources/samples.py">download</a>(sample_id, \*, dataset, \*\*<a href="src/codeset/types/sample_download_params.py">params</a>) -> object</code>
 
+# Datasets
+
+Types:
+
+```python
+from codeset.types import DatasetListResponse
+```
+
+Methods:
+
+- <code title="get /datasets">client.datasets.<a href="./src/codeset/resources/datasets.py">list</a>() -> <a href="./src/codeset/types/dataset_list_response.py">DatasetListResponse</a></code>
+
 # Sessions
 
 Types:

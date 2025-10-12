@@ -16,6 +16,14 @@ from .samples import (
     SamplesResourceWithStreamingResponse,
     AsyncSamplesResourceWithStreamingResponse,
 )
+from .datasets import (
+    DatasetsResource,
+    AsyncDatasetsResource,
+    DatasetsResourceWithRawResponse,
+    AsyncDatasetsResourceWithRawResponse,
+    DatasetsResourceWithStreamingResponse,
+    AsyncDatasetsResourceWithStreamingResponse,
+)
 from .sessions import (
     SessionsResource,
     AsyncSessionsResource,
@@ -38,6 +46,12 @@ __all__ = [
     "AsyncSamplesResourceWithRawResponse",
     "SamplesResourceWithStreamingResponse",
     "AsyncSamplesResourceWithStreamingResponse",
+    "DatasetsResource",
+    "AsyncDatasetsResource",
+    "DatasetsResourceWithRawResponse",
+    "AsyncDatasetsResourceWithRawResponse",
+    "DatasetsResourceWithStreamingResponse",
+    "AsyncDatasetsResourceWithStreamingResponse",
     "SessionsResource",
     "AsyncSessionsResource",
     "SessionsResourceWithRawResponse",
