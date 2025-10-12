@@ -8,6 +8,7 @@ from .container_info import ContainerInfo as ContainerInfo
 from .session_status import SessionStatus as SessionStatus
 from .sample_list_params import SampleListParams as SampleListParams
 from .sample_list_response import SampleListResponse as SampleListResponse
+from .dataset_list_response import DatasetListResponse as DatasetListResponse
 from .health_check_response import HealthCheckResponse as HealthCheckResponse
 from .session_create_params import SessionCreateParams as SessionCreateParams
 from .session_list_response import SessionListResponse as SessionListResponse

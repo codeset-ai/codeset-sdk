@@ -22,7 +22,7 @@ from ._types import (
 )
 from ._utils import is_given, get_async_library
 from ._version import __version__
-from .resources import health, samples
+from .resources import health, samples, datasets
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import APIStatusError
 from ._base_client import (
@@ -38,6 +38,7 @@ __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Codeset", 
 class Codeset(SyncAPIClient):
     health: health.HealthResource
     samples: samples.SamplesResource
+    datasets: datasets.DatasetsResource
     sessions: sessions.SessionsResource
     with_raw_response: CodesetWithRawResponse
     with_streaming_response: CodesetWithStreamedResponse
@@ -94,6 +95,7 @@ class Codeset(SyncAPIClient):
 
         self.health = health.HealthResource(self)
         self.samples = samples.SamplesResource(self)
+        self.datasets = datasets.DatasetsResource(self)
         self.sessions = sessions.SessionsResource(self)
         self.with_raw_response = CodesetWithRawResponse(self)
         self.with_streaming_response = CodesetWithStreamedResponse(self)
@@ -219,6 +221,7 @@ class Codeset(SyncAPIClient):
 class AsyncCodeset(AsyncAPIClient):
     health: health.AsyncHealthResource
     samples: samples.AsyncSamplesResource
+    datasets: datasets.AsyncDatasetsResource
     sessions: sessions.AsyncSessionsResource
     with_raw_response: AsyncCodesetWithRawResponse
     with_streaming_response: AsyncCodesetWithStreamedResponse
@@ -275,6 +278,7 @@ class AsyncCodeset(AsyncAPIClient):
 
         self.health = health.AsyncHealthResource(self)
         self.samples = samples.AsyncSamplesResource(self)
+        self.datasets = datasets.AsyncDatasetsResource(self)
         self.sessions = sessions.AsyncSessionsResource(self)
         self.with_raw_response = AsyncCodesetWithRawResponse(self)
         self.with_streaming_response = AsyncCodesetWithStreamedResponse(self)
@@ -401,6 +405,7 @@ class CodesetWithRawResponse:
     def __init__(self, client: Codeset) -> None:
         self.health = health.HealthResourceWithRawResponse(client.health)
         self.samples = samples.SamplesResourceWithRawResponse(client.samples)
+        self.datasets = datasets.DatasetsResourceWithRawResponse(client.datasets)
         self.sessions = sessions.SessionsResourceWithRawResponse(client.sessions)
 
 
@@ -408,6 +413,7 @@ class AsyncCodesetWithRawResponse:
     def __init__(self, client: AsyncCodeset) -> None:
         self.health = health.AsyncHealthResourceWithRawResponse(client.health)
         self.samples = samples.AsyncSamplesResourceWithRawResponse(client.samples)
+        self.datasets = datasets.AsyncDatasetsResourceWithRawResponse(client.datasets)
         self.sessions = sessions.AsyncSessionsResourceWithRawResponse(client.sessions)
 
 
@@ -415,6 +421,7 @@ class CodesetWithStreamedResponse:
     def __init__(self, client: Codeset) -> None:
         self.health = health.HealthResourceWithStreamingResponse(client.health)
         self.samples = samples.SamplesResourceWithStreamingResponse(client.samples)
+        self.datasets = datasets.DatasetsResourceWithStreamingResponse(client.datasets)
         self.sessions = sessions.SessionsResourceWithStreamingResponse(client.sessions)
 
 
@@ -422,6 +429,7 @@ class AsyncCodesetWithStreamedResponse:
     def __init__(self, client: AsyncCodeset) -> None:
         self.health = health.AsyncHealthResourceWithStreamingResponse(client.health)
         self.samples = samples.AsyncSamplesResourceWithStreamingResponse(client.samples)
+        self.datasets = datasets.AsyncDatasetsResourceWithStreamingResponse(client.datasets)
         self.sessions = sessions.AsyncSessionsResourceWithStreamingResponse(client.sessions)
 
 
