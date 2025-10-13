@@ -2,14 +2,14 @@
 
 from typing import List, Optional
 from datetime import datetime
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["SampleListResponse", "SampleListResponseItem"]
+__all__ = ["SampleListResponse", "Sample"]
 
 
-class SampleListResponseItem(BaseModel):
+class Sample(BaseModel):
     base_commit: str
     """Base commit hash for the sample."""
 
@@ -74,4 +74,18 @@ class SampleListResponseItem(BaseModel):
     """Description of this version."""
 
 
-SampleListResponse: TypeAlias = List[SampleListResponseItem]
+class SampleListResponse(BaseModel):
+    has_more: bool
+    """Indicates if more pages of results are available."""
+
+    page: int
+    """Current page number (1-based)."""
+
+    page_size: int
+    """Number of samples per page."""
+
+    samples: List[Sample]
+    """List of samples for the current page."""
+
+    total_count: int
+    """Total number of samples available."""

@@ -28,6 +28,9 @@ class TestSamples:
     def test_method_list_with_all_params(self, client: Codeset) -> None:
         sample = client.samples.list(
             dataset="dataset",
+            page=1,
+            page_size=1,
+            search="search",
         )
         assert_matches_type(SampleListResponse, sample, path=["response"])
 
@@ -132,6 +135,9 @@ class TestAsyncSamples:
     async def test_method_list_with_all_params(self, async_client: AsyncCodeset) -> None:
         sample = await async_client.samples.list(
             dataset="dataset",
+            page=1,
+            page_size=1,
+            search="search",
         )
         assert_matches_type(SampleListResponse, sample, path=["response"])
 
