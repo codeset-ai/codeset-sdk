@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-alpha.17 (2025-10-13)
+
+Full Changelog: [v0.1.0-alpha.16...v0.1.0-alpha.17](https://github.com/codeset-ai/codeset-sdk/compare/v0.1.0-alpha.16...v0.1.0-alpha.17)
+
+### Features
+
+* **api:** api update ([144e105](https://github.com/codeset-ai/codeset-sdk/commit/144e1055278e5a11e3c9632ab6e8849012e280be))
+* **api:** api update ([8f37713](https://github.com/codeset-ai/codeset-sdk/commit/8f37713404d39a21d5fd4f0b4a1a93d059511391))
+
 ## 0.1.0-alpha.16 (2025-10-12)
 
 Full Changelog: [v0.1.0-alpha.15...v0.1.0-alpha.16](https://github.com/codeset-ai/codeset-sdk/compare/v0.1.0-alpha.15...v0.1.0-alpha.16)

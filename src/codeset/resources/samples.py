@@ -47,6 +47,9 @@ class SamplesResource(SyncAPIResource):
         self,
         *,
         dataset: Optional[str] | Omit = omit,
+        page: Optional[int] | Omit = omit,
+        page_size: Optional[int] | Omit = omit,
+        search: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -55,10 +58,16 @@ class SamplesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SampleListResponse:
         """
-        List available samples, optionally filtered by dataset
+        List available samples with optional pagination, optionally filtered by dataset
 
         Args:
           dataset: Filter samples by dataset name
+
+          page: Page number (1-based). If not provided, returns all samples
+
+          page_size: Number of samples per page (max 100). If not provided, returns all samples
+
+          search: Search for samples by instance_id
 
           extra_headers: Send extra headers
 
@@ -75,7 +84,15 @@ class SamplesResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"dataset": dataset}, sample_list_params.SampleListParams),
+                query=maybe_transform(
+                    {
+                        "dataset": dataset,
+                        "page": page,
+                        "page_size": page_size,
+                        "search": search,
+                    },
+                    sample_list_params.SampleListParams,
+                ),
             ),
             cast_to=SampleListResponse,
         )
@@ -146,6 +163,9 @@ class AsyncSamplesResource(AsyncAPIResource):
         self,
         *,
         dataset: Optional[str] | Omit = omit,
+        page: Optional[int] | Omit = omit,
+        page_size: Optional[int] | Omit = omit,
+        search: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -154,10 +174,16 @@ class AsyncSamplesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SampleListResponse:
         """
-        List available samples, optionally filtered by dataset
+        List available samples with optional pagination, optionally filtered by dataset
 
         Args:
           dataset: Filter samples by dataset name
+
+          page: Page number (1-based). If not provided, returns all samples
+
+          page_size: Number of samples per page (max 100). If not provided, returns all samples
+
+          search: Search for samples by instance_id
 
           extra_headers: Send extra headers
 
@@ -174,7 +200,15 @@ class AsyncSamplesResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"dataset": dataset}, sample_list_params.SampleListParams),
+                query=await async_maybe_transform(
+                    {
+                        "dataset": dataset,
+                        "page": page,
+                        "page_size": page_size,
+                        "search": search,
+                    },
+                    sample_list_params.SampleListParams,
+                ),
             ),
             cast_to=SampleListResponse,
         )
