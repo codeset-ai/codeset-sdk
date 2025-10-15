@@ -17,6 +17,9 @@ class ContainerInfo(BaseModel):
     expires_at: datetime
     """Timestamp when the container will expire (UTC)."""
 
+    location: str
+    """Cloud Run region where the container is deployed (e.g., 'europe-west1')."""
+
     sample_id: str
     """Sample ID of the container."""
 
