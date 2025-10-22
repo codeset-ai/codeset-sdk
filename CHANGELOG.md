@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.18 (2025-10-18)
+
+Full Changelog: [v0.1.0-alpha.17...v0.1.0-alpha.18](https://github.com/codeset-ai/codeset-sdk/compare/v0.1.0-alpha.17...v0.1.0-alpha.18)
+
+### Features
+
+* **api:** api update ([2fd0294](https://github.com/codeset-ai/codeset-sdk/commit/2fd029446f39a393519bec616cdea9a8b52b6b62))
+
+
+### Chores
+
+* bump `httpx-aiohttp` version to 0.1.9 ([667f83a](https://github.com/codeset-ai/codeset-sdk/commit/667f83a7e31d82edbb566ba428cdd84f5c2d34a3))
+
 ## 0.1.0-alpha.17 (2025-10-13)
 
 Full Changelog: [v0.1.0-alpha.16...v0.1.0-alpha.17](https://github.com/codeset-ai/codeset-sdk/compare/v0.1.0-alpha.16...v0.1.0-alpha.17)
