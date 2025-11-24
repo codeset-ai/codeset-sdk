@@ -64,13 +64,15 @@ class SessionsResource(SyncAPIResource):
         dataset: str,
         sample_id: str,
         ttl_minutes: int | Omit = omit,
+        poll_interval: float = 3.0,
+        wait_for_ready: bool = True,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SessionCreateResponse:
+    ) -> Session:
         """
         Create a new session
 
@@ -81,6 +83,10 @@ class SessionsResource(SyncAPIResource):
 
           ttl_minutes: Time to live for the session in minutes (default: 30).
 
+          poll_interval: Interval in seconds between polling attempts while waiting for session to be ready (default: 3.0).
+
+          wait_for_ready: Whether to poll until the session is ready (default: True). If False, returns the session immediately after creation.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -89,7 +95,7 @@ class SessionsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._post(
+        response = self._post(
             "/sessions",
             body=maybe_transform(
                 {
@@ -104,6 +110,31 @@ class SessionsResource(SyncAPIResource):
             ),
             cast_to=SessionCreateResponse,
         )
+
+        session = self.retrieve(
+            response.session_id,
+            extra_headers=extra_headers,
+            extra_query=extra_query,
+            extra_body=extra_body,
+            timeout=timeout,
+        )
+        
+        if not wait_for_ready:
+            return session
+        
+        while session.status != "ready":
+            if session.status in ("error", "closed"):
+                return session
+            self._sleep(poll_interval)
+            session = self.retrieve(
+                response.session_id,
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+            )
+        
+        return session
 
     def retrieve(
         self,
@@ -317,13 +348,15 @@ class AsyncSessionsResource(AsyncAPIResource):
         dataset: str,
         sample_id: str,
         ttl_minutes: int | Omit = omit,
+        poll_interval: float = 3.0,
+        wait_for_ready: bool = True,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SessionCreateResponse:
+    ) -> Session:
         """
         Create a new session
 
@@ -334,6 +367,10 @@ class AsyncSessionsResource(AsyncAPIResource):
 
           ttl_minutes: Time to live for the session in minutes (default: 30).
 
+          poll_interval: Interval in seconds between polling attempts while waiting for session to be ready (default: 3.0).
+
+          wait_for_ready: Whether to poll until the session is ready (default: True). If False, returns the session immediately after creation.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -342,7 +379,7 @@ class AsyncSessionsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._post(
+        response = await self._post(
             "/sessions",
             body=await async_maybe_transform(
                 {
@@ -357,6 +394,31 @@ class AsyncSessionsResource(AsyncAPIResource):
             ),
             cast_to=SessionCreateResponse,
         )
+        
+        session = await self.retrieve(
+            response.session_id,
+            extra_headers=extra_headers,
+            extra_query=extra_query,
+            extra_body=extra_body,
+            timeout=timeout,
+        )
+        
+        if not wait_for_ready:
+            return session
+        
+        while session.status != "ready":
+            if session.status in ("error", "closed"):
+                return session
+            await self._sleep(poll_interval)
+            session = await self.retrieve(
+                response.session_id,
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+            )
+        
+        return session
 
     async def retrieve(
         self,
