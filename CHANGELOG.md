@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.0 (2025-11-24)
+
+Full Changelog: [v0.1.0-alpha.19...v0.2.0](https://github.com/codeset-ai/codeset-sdk/compare/v0.1.0-alpha.19...v0.2.0)
+
+### Features
+
+* **sessions:** add automatic timeout handling for session creation and polling operations ([ed1fe89](https://github.com/codeset-ai/codeset-sdk/commit/ed1fe89))
+* **verify:** add automatic timeout handling for verification start and status polling operations ([ed1fe89](https://github.com/codeset-ai/codeset-sdk/commit/ed1fe89))
+* **utils:** add `check_timeout` and `get_remaining_timeout` utilities for proper timeout management during long-running operations ([ed1fe89](https://github.com/codeset-ai/codeset-sdk/commit/ed1fe89))
+
 ## 0.1.0-alpha.19 (2025-11-22)
 
 Full Changelog: [v0.1.0-alpha.18...v0.1.0-alpha.19](https://github.com/codeset-ai/codeset-sdk/compare/v0.1.0-alpha.18...v0.1.0-alpha.19)
