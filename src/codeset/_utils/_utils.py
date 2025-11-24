@@ -443,7 +443,7 @@ def get_remaining_timeout(
         timeout_seconds = float(timeout)
         remaining = max(0.1, timeout_seconds - elapsed)
         return remaining if remaining > 0 else 0.1
-    elif isinstance(timeout, httpx.Timeout):
+    else:
         timeout_seconds = getattr(timeout, "timeout", 300.0)
         remaining = max(0.1, timeout_seconds - elapsed)
         if remaining <= 0:
@@ -469,9 +469,7 @@ def check_timeout(
         elapsed = time.time() - start_time
         if isinstance(timeout, (int, float)):
             timeout_seconds = float(timeout)
-        elif isinstance(timeout, httpx.Timeout):
-            timeout_seconds = getattr(timeout, "timeout", 300.0)
         else:
-            timeout_seconds = 300.0
+            timeout_seconds = getattr(timeout, "timeout", 300.0)
         if elapsed >= timeout_seconds:
             raise TimeoutError(f"Operation timed out after {elapsed:.2f} seconds")
