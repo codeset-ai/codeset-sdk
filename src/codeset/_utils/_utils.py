@@ -449,7 +449,6 @@ def get_remaining_timeout(
         if remaining <= 0:
             raise TimeoutError(f"Operation timed out after {elapsed:.2f} seconds")
         return httpx.Timeout(timeout=remaining, connect=getattr(timeout, "connect", 5.0))
-    return timeout
 
 
 def check_timeout(
