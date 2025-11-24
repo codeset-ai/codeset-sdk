@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.3.0 (2025-11-24)
+
+Full Changelog: [v0.2.0...v0.3.0](https://github.com/codeset-ai/codeset-sdk/compare/v0.2.0...v0.3.0)
+
+### Features
+
+* add automatic pooling to sessions and verification ([#21](https://github.com/codeset-ai/codeset-sdk/issues/21)) ([33a6349](https://github.com/codeset-ai/codeset-sdk/commit/33a634987830fa208a9626ed96ea2a6ffaee6a74))
+* **api:** api update ([8931018](https://github.com/codeset-ai/codeset-sdk/commit/893101836a762bc2dcb38fa2399f37f8d6b2602a))
+* **api:** api update ([fe1d4a0](https://github.com/codeset-ai/codeset-sdk/commit/fe1d4a0e2fe6856c153d323ee6b6ced08b78ee0d))
+* **api:** api update ([320fda3](https://github.com/codeset-ai/codeset-sdk/commit/320fda3ff1b5c99c2f4f9eb46c09adb8fdc6c630))
+* **api:** manual updates ([74c5a71](https://github.com/codeset-ai/codeset-sdk/commit/74c5a71a101028db412719cb1edcc7ff3f96251b))
+
 ## 0.2.0 (2025-11-24)
 
 Full Changelog: [v0.1.0-alpha.19...v0.2.0](https://github.com/codeset-ai/codeset-sdk/compare/v0.1.0-alpha.19...v0.2.0)

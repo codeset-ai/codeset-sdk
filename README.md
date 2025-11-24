@@ -17,7 +17,7 @@ The REST API documentation can be found on [docs.codeset.ai](https://docs.codese
 
 ```sh
 # install from PyPI
-pip install --pre codeset
+pip install codeset
 ```
 
 ## Usage
@@ -73,7 +73,7 @@ You can enable this by installing `aiohttp`:
 
 ```sh
 # install from PyPI
-pip install --pre codeset[aiohttp]
+pip install codeset[aiohttp]
 ```
 
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
