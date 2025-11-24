@@ -2,9 +2,12 @@
 
 from __future__ import annotations
 
+import time
+
 import httpx
 
 from ..._types import Body, Query, Headers, NotGiven, not_given
+from ..._utils import check_timeout, get_remaining_timeout
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -44,17 +47,23 @@ class VerifyResource(SyncAPIResource):
         self,
         session_id: str,
         *,
+        poll_interval: float = 3.0,
+        wait_for_completion: bool = True,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> VerifyStartResponse:
+    ) -> VerifyStatusResponse:
         """
         Start verification (oracle) in a session - async
 
         Args:
+          poll_interval: Interval in seconds between polling attempts while waiting for verification to complete (default: 3.0).
+
+          wait_for_completion: Whether to poll until the verification is completed (default: True). If False, returns the current status immediately after creation.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -65,13 +74,49 @@ class VerifyResource(SyncAPIResource):
         """
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
-        return self._post(
+        start_time = time.time()
+
+        check_timeout(timeout, start_time)
+        response = self._post(
             f"/sessions/{session_id}/verify",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=get_remaining_timeout(timeout, start_time),
             ),
             cast_to=VerifyStartResponse,
         )
+
+        check_timeout(timeout, start_time)
+        status_response = self.status(
+            response.job_id,
+            session_id=session_id,
+            extra_headers=extra_headers,
+            extra_query=extra_query,
+            extra_body=extra_body,
+            timeout=get_remaining_timeout(timeout, start_time),
+        )
+
+        if not wait_for_completion:
+            return status_response
+
+        while status_response.status != "completed":
+            if status_response.status in ("error", "cancelled"):
+                return status_response
+            check_timeout(timeout, start_time)
+            self._sleep(poll_interval)
+            check_timeout(timeout, start_time)
+            status_response = self.status(
+                response.job_id,
+                session_id=session_id,
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=get_remaining_timeout(timeout, start_time),
+            )
+
+        return status_response
 
     def status(
         self,
@@ -134,17 +179,23 @@ class AsyncVerifyResource(AsyncAPIResource):
         self,
         session_id: str,
         *,
+        poll_interval: float = 3.0,
+        wait_for_completion: bool = True,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> VerifyStartResponse:
+    ) -> VerifyStatusResponse:
         """
         Start verification (oracle) in a session - async
 
         Args:
+          poll_interval: Interval in seconds between polling attempts while waiting for verification to complete (default: 3.0).
+
+          wait_for_completion: Whether to poll until the verification is completed (default: True). If False, returns the current status immediately after creation.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -155,13 +206,49 @@ class AsyncVerifyResource(AsyncAPIResource):
         """
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
-        return await self._post(
+        start_time = time.time()
+
+        check_timeout(timeout, start_time)
+        response = await self._post(
             f"/sessions/{session_id}/verify",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=get_remaining_timeout(timeout, start_time),
             ),
             cast_to=VerifyStartResponse,
         )
+
+        check_timeout(timeout, start_time)
+        status_response = await self.status(
+            response.job_id,
+            session_id=session_id,
+            extra_headers=extra_headers,
+            extra_query=extra_query,
+            extra_body=extra_body,
+            timeout=get_remaining_timeout(timeout, start_time),
+        )
+
+        if not wait_for_completion:
+            return status_response
+
+        while status_response.status != "completed":
+            if status_response.status in ("error", "cancelled"):
+                return status_response
+            check_timeout(timeout, start_time)
+            await self._sleep(poll_interval)
+            check_timeout(timeout, start_time)
+            status_response = await self.status(
+                response.job_id,
+                session_id=session_id,
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=get_remaining_timeout(timeout, start_time),
+            )
+
+        return status_response
 
     async def status(
         self,

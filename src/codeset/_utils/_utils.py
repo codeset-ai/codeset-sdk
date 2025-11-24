@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import os
 import re
+import time
 import inspect
 import functools
 from typing import (
@@ -19,6 +20,7 @@ from pathlib import Path
 from datetime import date, datetime
 from typing_extensions import TypeGuard
 
+import httpx
 import sniffio
 
 from .._types import Omit, NotGiven, FileTypes, HeadersLike
@@ -419,3 +421,54 @@ def json_safe(data: object) -> object:
         return data.isoformat()
 
     return data
+
+
+def get_remaining_timeout(
+    timeout: float | httpx.Timeout | None | NotGiven,
+    start_time: float,
+) -> float | httpx.Timeout | None | NotGiven:
+    """Calculate the remaining timeout based on elapsed time.
+
+    Args:
+        timeout: The original timeout value (float, httpx.Timeout, None, or NotGiven)
+        start_time: The start time of the operation (from time.time())
+
+    Returns:
+        The remaining timeout value in the same format as the input timeout
+    """
+    if isinstance(timeout, NotGiven) or timeout is None:
+        return timeout
+    elapsed = time.time() - start_time
+    if isinstance(timeout, (int, float)):
+        timeout_seconds = float(timeout)
+        remaining = max(0.1, timeout_seconds - elapsed)
+        return remaining if remaining > 0 else 0.1
+    else:
+        timeout_seconds = getattr(timeout, "timeout", 300.0)
+        remaining = max(0.1, timeout_seconds - elapsed)
+        if remaining <= 0:
+            raise TimeoutError(f"Operation timed out after {elapsed:.2f} seconds")
+        return httpx.Timeout(timeout=remaining, connect=getattr(timeout, "connect", 5.0))
+
+
+def check_timeout(
+    timeout: float | httpx.Timeout | None | NotGiven,
+    start_time: float,
+) -> None:
+    """Check if the operation has exceeded the timeout and raise TimeoutError if so.
+
+    Args:
+        timeout: The original timeout value (float, httpx.Timeout, None, or NotGiven)
+        start_time: The start time of the operation (from time.time())
+
+    Raises:
+        TimeoutError: If the elapsed time exceeds the timeout
+    """
+    if not isinstance(timeout, NotGiven) and timeout is not None:
+        elapsed = time.time() - start_time
+        if isinstance(timeout, (int, float)):
+            timeout_seconds = float(timeout)
+        else:
+            timeout_seconds = getattr(timeout, "timeout", 300.0)
+        if elapsed >= timeout_seconds:
+            raise TimeoutError(f"Operation timed out after {elapsed:.2f} seconds")

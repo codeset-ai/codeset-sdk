@@ -16,6 +16,7 @@ from ._utils import (
     is_mapping_t as is_mapping_t,
     removeprefix as removeprefix,
     removesuffix as removesuffix,
+    check_timeout as check_timeout,
     extract_files as extract_files,
     is_sequence_t as is_sequence_t,
     required_args as required_args,
@@ -29,6 +30,7 @@ from ._utils import (
     get_required_header as get_required_header,
     maybe_coerce_boolean as maybe_coerce_boolean,
     maybe_coerce_integer as maybe_coerce_integer,
+    get_remaining_timeout as get_remaining_timeout,
 )
 from ._compat import (
     get_args as get_args,
