@@ -2,9 +2,12 @@
 
 from __future__ import annotations
 
+import time
+
 import httpx
 
 from ..._types import Body, Query, Headers, NotGiven, not_given
+from ..._utils import check_timeout, get_remaining_timeout
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -71,39 +74,48 @@ class VerifyResource(SyncAPIResource):
         """
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
+        start_time = time.time()
+
+        check_timeout(timeout, start_time)
         response = self._post(
             f"/sessions/{session_id}/verify",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=get_remaining_timeout(timeout, start_time),
             ),
             cast_to=VerifyStartResponse,
         )
-        
+
+        check_timeout(timeout, start_time)
         status_response = self.status(
             response.job_id,
             session_id=session_id,
             extra_headers=extra_headers,
             extra_query=extra_query,
             extra_body=extra_body,
-            timeout=timeout,
+            timeout=get_remaining_timeout(timeout, start_time),
         )
-        
+
         if not wait_for_completion:
             return status_response
-        
+
         while status_response.status != "completed":
             if status_response.status in ("error", "cancelled"):
                 return status_response
+            check_timeout(timeout, start_time)
             self._sleep(poll_interval)
+            check_timeout(timeout, start_time)
             status_response = self.status(
                 response.job_id,
                 session_id=session_id,
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                timeout=timeout,
+                timeout=get_remaining_timeout(timeout, start_time),
             )
-        
+
         return status_response
 
     def status(
@@ -194,39 +206,48 @@ class AsyncVerifyResource(AsyncAPIResource):
         """
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
+        start_time = time.time()
+
+        check_timeout(timeout, start_time)
         response = await self._post(
             f"/sessions/{session_id}/verify",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=get_remaining_timeout(timeout, start_time),
             ),
             cast_to=VerifyStartResponse,
         )
-        
+
+        check_timeout(timeout, start_time)
         status_response = await self.status(
             response.job_id,
             session_id=session_id,
             extra_headers=extra_headers,
             extra_query=extra_query,
             extra_body=extra_body,
-            timeout=timeout,
+            timeout=get_remaining_timeout(timeout, start_time),
         )
-        
+
         if not wait_for_completion:
             return status_response
-        
+
         while status_response.status != "completed":
             if status_response.status in ("error", "cancelled"):
                 return status_response
+            check_timeout(timeout, start_time)
             await self._sleep(poll_interval)
+            check_timeout(timeout, start_time)
             status_response = await self.status(
                 response.job_id,
                 session_id=session_id,
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                timeout=timeout,
+                timeout=get_remaining_timeout(timeout, start_time),
             )
-        
+
         return status_response
 
     async def status(

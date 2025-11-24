@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import time
+
 import httpx
 
 from .verify import (
@@ -14,7 +16,7 @@ from .verify import (
 )
 from ...types import session_create_params, session_str_replace_params, session_execute_command_params
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import check_timeout, maybe_transform, async_maybe_transform, get_remaining_timeout
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -95,6 +97,9 @@ class SessionsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        start_time = time.time()
+
+        check_timeout(timeout, start_time)
         response = self._post(
             "/sessions",
             body=maybe_transform(
@@ -106,34 +111,40 @@ class SessionsResource(SyncAPIResource):
                 session_create_params.SessionCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=get_remaining_timeout(timeout, start_time),
             ),
             cast_to=SessionCreateResponse,
         )
 
+        check_timeout(timeout, start_time)
         session = self.retrieve(
             response.session_id,
             extra_headers=extra_headers,
             extra_query=extra_query,
             extra_body=extra_body,
-            timeout=timeout,
+            timeout=get_remaining_timeout(timeout, start_time),
         )
-        
+
         if not wait_for_ready:
             return session
-        
+
         while session.status != "ready":
             if session.status in ("error", "closed"):
                 return session
+            check_timeout(timeout, start_time)
             self._sleep(poll_interval)
+            check_timeout(timeout, start_time)
             session = self.retrieve(
                 response.session_id,
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                timeout=timeout,
+                timeout=get_remaining_timeout(timeout, start_time),
             )
-        
+
         return session
 
     def retrieve(
@@ -379,6 +390,9 @@ class AsyncSessionsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        start_time = time.time()
+
+        check_timeout(timeout, start_time)
         response = await self._post(
             "/sessions",
             body=await async_maybe_transform(
@@ -390,34 +404,40 @@ class AsyncSessionsResource(AsyncAPIResource):
                 session_create_params.SessionCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=get_remaining_timeout(timeout, start_time),
             ),
             cast_to=SessionCreateResponse,
         )
-        
+
+        check_timeout(timeout, start_time)
         session = await self.retrieve(
             response.session_id,
             extra_headers=extra_headers,
             extra_query=extra_query,
             extra_body=extra_body,
-            timeout=timeout,
+            timeout=get_remaining_timeout(timeout, start_time),
         )
-        
+
         if not wait_for_ready:
             return session
-        
+
         while session.status != "ready":
             if session.status in ("error", "closed"):
                 return session
+            check_timeout(timeout, start_time)
             await self._sleep(poll_interval)
+            check_timeout(timeout, start_time)
             session = await self.retrieve(
                 response.session_id,
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
-                timeout=timeout,
+                timeout=get_remaining_timeout(timeout, start_time),
             )
-        
+
         return session
 
     async def retrieve(
