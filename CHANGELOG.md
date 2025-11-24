@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.1.0-alpha.19 (2025-11-22)
+
+Full Changelog: [v0.1.0-alpha.18...v0.1.0-alpha.19](https://github.com/codeset-ai/codeset-sdk/compare/v0.1.0-alpha.18...v0.1.0-alpha.19)
+
+### Bug Fixes
+
+* **client:** close streams without requiring full consumption ([e028431](https://github.com/codeset-ai/codeset-sdk/commit/e028431d77c1d9939e86547f12483fc9755978f3))
+* compat with Python 3.14 ([73e05c2](https://github.com/codeset-ai/codeset-sdk/commit/73e05c2622152fb8f231724c3639a3e3b3e80b31))
+* **compat:** update signatures of `model_dump` and `model_dump_json` for Pydantic v1 ([1ae6791](https://github.com/codeset-ai/codeset-sdk/commit/1ae679196c23e9b587d08ab63f369fcb5b45e994))
+
+
+### Chores
+
+* add Python 3.14 classifier and testing ([ce2e917](https://github.com/codeset-ai/codeset-sdk/commit/ce2e917d700328f52ac97416262300ea72978706))
+* **internal/tests:** avoid race condition with implicit client cleanup ([5346a21](https://github.com/codeset-ai/codeset-sdk/commit/5346a211fa4ab95ec781d43967991960ba419622))
+* **internal:** grammar fix (it's -&gt; its) ([abeeee9](https://github.com/codeset-ai/codeset-sdk/commit/abeeee91cc089502d0c046d627564330617985d1))
+* **package:** drop Python 3.8 support ([95342a2](https://github.com/codeset-ai/codeset-sdk/commit/95342a2904380b31c5a1b3bdfb4c7c6a9ceb619c))
+
 ## 0.1.0-alpha.18 (2025-10-18)
 
 Full Changelog: [v0.1.0-alpha.17...v0.1.0-alpha.18](https://github.com/codeset-ai/codeset-sdk/compare/v0.1.0-alpha.17...v0.1.0-alpha.18)
