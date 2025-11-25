@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from .session import Session as Session
 from .error_info import ErrorInfo as ErrorInfo
+from .interaction import Interaction as Interaction
 from .container_info import ContainerInfo as ContainerInfo
 from .session_status import SessionStatus as SessionStatus
 from .sample_list_params import SampleListParams as SampleListParams

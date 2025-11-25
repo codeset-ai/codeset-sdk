@@ -27,6 +27,7 @@ from ..._response import (
 )
 from ..._base_client import make_request_options
 from ...types.session import Session
+from ...types.interaction import Interaction
 from ...types.session_list_response import SessionListResponse
 from ...types.session_close_response import SessionCloseResponse
 from ...types.session_create_response import SessionCreateResponse
@@ -238,13 +239,15 @@ class SessionsResource(SyncAPIResource):
         *,
         command: str,
         command_timeout: int | Omit = omit,
+        poll_interval: float = 3.0,
+        wait_for_completion: bool = True,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SessionExecuteCommandResponse:
+    ) -> Interaction:
         """
         Execute a bash command in an environment
 
@@ -252,6 +255,10 @@ class SessionsResource(SyncAPIResource):
           command: The bash command to execute.
 
           command_timeout: Timeout for command execution in seconds (default: 300).
+
+          poll_interval: Interval in seconds between polling attempts while waiting for command to complete (default: 3.0).
+
+          wait_for_completion: Whether to poll until the command is completed (default: True). If False, returns the interaction immediately after creation.
 
           extra_headers: Send extra headers
 
@@ -263,7 +270,10 @@ class SessionsResource(SyncAPIResource):
         """
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
-        return self._post(
+        start_time = time.time()
+
+        check_timeout(timeout, start_time)
+        response = self._post(
             f"/sessions/{session_id}/exec",
             body=maybe_transform(
                 {
@@ -273,9 +283,78 @@ class SessionsResource(SyncAPIResource):
                 session_execute_command_params.SessionExecuteCommandParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=get_remaining_timeout(timeout, start_time),
             ),
             cast_to=SessionExecuteCommandResponse,
+        )
+
+        interaction_id = response.interaction_id
+
+        check_timeout(timeout, start_time)
+        interaction = self.get_interaction(
+            session_id,
+            interaction_id,
+            extra_headers=extra_headers,
+            extra_query=extra_query,
+            extra_body=extra_body,
+            timeout=get_remaining_timeout(timeout, start_time),
+        )
+
+        if not wait_for_completion:
+            return interaction
+
+        while interaction.exit_code is None:
+            check_timeout(timeout, start_time)
+            self._sleep(poll_interval)
+            check_timeout(timeout, start_time)
+            interaction = self.get_interaction(
+                session_id,
+                interaction_id,
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=get_remaining_timeout(timeout, start_time),
+            )
+
+        return interaction
+
+    def get_interaction(
+        self,
+        session_id: str,
+        interaction_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> Interaction:
+        """
+        Get interaction details by ID
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not session_id:
+            raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
+        if not interaction_id:
+            raise ValueError(f"Expected a non-empty value for `interaction_id` but received {interaction_id!r}")
+        return self._get(
+            f"/sessions/{session_id}/interactions/{interaction_id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Interaction,
         )
 
     def str_replace(
@@ -531,13 +610,15 @@ class AsyncSessionsResource(AsyncAPIResource):
         *,
         command: str,
         command_timeout: int | Omit = omit,
+        poll_interval: float = 3.0,
+        wait_for_completion: bool = True,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SessionExecuteCommandResponse:
+    ) -> Interaction:
         """
         Execute a bash command in an environment
 
@@ -545,6 +626,10 @@ class AsyncSessionsResource(AsyncAPIResource):
           command: The bash command to execute.
 
           command_timeout: Timeout for command execution in seconds (default: 300).
+
+          poll_interval: Interval in seconds between polling attempts while waiting for command to complete (default: 3.0).
+
+          wait_for_completion: Whether to poll until the command is completed (default: True). If False, returns the interaction immediately after creation.
 
           extra_headers: Send extra headers
 
@@ -556,7 +641,10 @@ class AsyncSessionsResource(AsyncAPIResource):
         """
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
-        return await self._post(
+        start_time = time.time()
+
+        check_timeout(timeout, start_time)
+        response = await self._post(
             f"/sessions/{session_id}/exec",
             body=await async_maybe_transform(
                 {
@@ -566,9 +654,78 @@ class AsyncSessionsResource(AsyncAPIResource):
                 session_execute_command_params.SessionExecuteCommandParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=get_remaining_timeout(timeout, start_time),
             ),
             cast_to=SessionExecuteCommandResponse,
+        )
+
+        interaction_id = response.interaction_id
+
+        check_timeout(timeout, start_time)
+        interaction = await self.get_interaction(
+            session_id,
+            interaction_id,
+            extra_headers=extra_headers,
+            extra_query=extra_query,
+            extra_body=extra_body,
+            timeout=get_remaining_timeout(timeout, start_time),
+        )
+
+        if not wait_for_completion:
+            return interaction
+
+        while interaction.exit_code is None:
+            check_timeout(timeout, start_time)
+            await self._sleep(poll_interval)
+            check_timeout(timeout, start_time)
+            interaction = await self.get_interaction(
+                session_id,
+                interaction_id,
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=get_remaining_timeout(timeout, start_time),
+            )
+
+        return interaction
+
+    async def get_interaction(
+        self,
+        session_id: str,
+        interaction_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> Interaction:
+        """
+        Get interaction details by ID
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not session_id:
+            raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
+        if not interaction_id:
+            raise ValueError(f"Expected a non-empty value for `interaction_id` but received {interaction_id!r}")
+        return await self._get(
+            f"/sessions/{session_id}/interactions/{interaction_id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=Interaction,
         )
 
     async def str_replace(
