@@ -204,7 +204,7 @@ class SessionsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SessionExecuteCommandResponse:
         """
-        Execute a bash command in an environment
+        Start command execution in an environment (async)
 
         Args:
           command: The bash command to execute.
@@ -457,7 +457,7 @@ class AsyncSessionsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SessionExecuteCommandResponse:
         """
-        Execute a bash command in an environment
+        Start command execution in an environment (async)
 
         Args:
           command: The bash command to execute.

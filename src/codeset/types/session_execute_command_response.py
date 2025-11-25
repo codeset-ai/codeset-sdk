@@ -6,14 +6,8 @@ __all__ = ["SessionExecuteCommandResponse"]
 
 
 class SessionExecuteCommandResponse(BaseModel):
-    execution_time_seconds: float
-    """Execution time in seconds."""
+    interaction_id: str
+    """Unique identifier for the interaction."""
 
-    exit_code: int
-    """Exit code of the executed command."""
-
-    stderr: str
-    """Standard error from the command."""
-
-    stdout: str
-    """Standard output from the command."""
+    status: str
+    """Status of the interaction: 'pending', 'processing', 'completed', or 'failed'."""
