@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.4.0 (2025-11-25)
+
+Full Changelog: [v0.3.0...v0.4.0](https://github.com/codeset-ai/codeset-sdk/compare/v0.3.0...v0.4.0)
+
+### Features
+
+* **api:** api update ([46da54a](https://github.com/codeset-ai/codeset-sdk/commit/46da54a97c8d16592eb1cfb94e42f1a82b8faaf1))
+
+
+### Bug Fixes
+
+* pooling for exec commands ([#24](https://github.com/codeset-ai/codeset-sdk/issues/24)) ([86f71ef](https://github.com/codeset-ai/codeset-sdk/commit/86f71ef8b6a4c8d4f499a260ed2d46aa49203158))
+
 ## 0.3.0 (2025-11-24)
 
 Full Changelog: [v0.2.0...v0.3.0](https://github.com/codeset-ai/codeset-sdk/compare/v0.2.0...v0.3.0)
