@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.4.1 (2025-11-28)
+
+Full Changelog: [v0.4.0...v0.4.1](https://github.com/codeset-ai/codeset-sdk/compare/v0.4.0...v0.4.1)
+
+### Bug Fixes
+
+* ensure streams are always closed ([6a2ab50](https://github.com/codeset-ai/codeset-sdk/commit/6a2ab50bf9744b89cfc06d18a2247cdaaf26403b))
+
+
+### Chores
+
+* **deps:** mypy 1.18.1 has a regression, pin to 1.17 ([5ca83f3](https://github.com/codeset-ai/codeset-sdk/commit/5ca83f3dce0b0858062bb1b3e2f08bec999a050b))
+
 ## 0.4.0 (2025-11-25)
 
 Full Changelog: [v0.3.0...v0.4.0](https://github.com/codeset-ai/codeset-sdk/compare/v0.3.0...v0.4.0)
