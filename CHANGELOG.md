@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.4.2 (2025-12-03)
+
+Full Changelog: [v0.4.1...v0.4.2](https://github.com/codeset-ai/codeset-sdk/compare/v0.4.1...v0.4.2)
+
+### Chores
+
+* **docs:** use environment variables for authentication in code snippets ([924ade7](https://github.com/codeset-ai/codeset-sdk/commit/924ade7a4e7f38164fc2361edd00aad8d34e9d67))
+* update lockfile ([25c7fbf](https://github.com/codeset-ai/codeset-sdk/commit/25c7fbff8479284b05e329be22849180a033936a))
+
 ## 0.4.1 (2025-11-28)
 
 Full Changelog: [v0.4.0...v0.4.1](https://github.com/codeset-ai/codeset-sdk/compare/v0.4.0...v0.4.1)
