@@ -6,6 +6,8 @@ __all__ = ["HealthCheckResponse"]
 
 
 class HealthCheckResponse(BaseModel):
+    """Response model for health check endpoint."""
+
     service: str
     """Name of the service"""
 

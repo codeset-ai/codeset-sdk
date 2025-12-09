@@ -12,6 +12,8 @@ __all__ = ["Session"]
 
 
 class Session(BaseModel):
+    """Represents a session for multi-turn interactions."""
+
     dataset: str
     """Dataset name for the sample."""
 

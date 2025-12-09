@@ -10,6 +10,8 @@ __all__ = ["DatasetListResponse", "DatasetListResponseItem"]
 
 
 class DatasetListResponseItem(BaseModel):
+    """Information about a dataset."""
+
     name: str
     """Unique name of the dataset."""
 

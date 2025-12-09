@@ -13,6 +13,8 @@ __all__ = ["VerifyStatusResponse", "Result"]
 
 
 class Result(BaseModel):
+    """Result from a test suite verifier."""
+
     execution_duration_seconds: float
     """Total execution time for the verification step."""
 
@@ -44,6 +46,8 @@ class Result(BaseModel):
 
 
 class VerifyStatusResponse(BaseModel):
+    """Represents a single verification job, the core resource of the API."""
+
     created_at: datetime
     """Timestamp when the job was created (UTC)."""
 

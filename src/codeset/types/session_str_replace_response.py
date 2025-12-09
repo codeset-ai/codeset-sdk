@@ -6,6 +6,8 @@ __all__ = ["SessionStrReplaceResponse"]
 
 
 class SessionStrReplaceResponse(BaseModel):
+    """Response for string replacement operation."""
+
     message: str
     """Details about the string replacement operation."""
 
