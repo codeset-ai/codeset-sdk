@@ -6,6 +6,8 @@ __all__ = ["SessionExecuteCommandResponse"]
 
 
 class SessionExecuteCommandResponse(BaseModel):
+    """Response for starting command execution (async)."""
+
     interaction_id: str
     """Unique identifier for the interaction."""
 

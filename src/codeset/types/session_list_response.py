@@ -9,6 +9,8 @@ __all__ = ["SessionListResponse"]
 
 
 class SessionListResponse(BaseModel):
+    """Response for listing sessions."""
+
     has_more: bool
     """Indicates if more pages of results are available."""
 

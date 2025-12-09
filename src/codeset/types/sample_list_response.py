@@ -10,6 +10,8 @@ __all__ = ["SampleListResponse", "Sample"]
 
 
 class Sample(BaseModel):
+    """Information about a software engineering task sample."""
+
     base_commit: str
     """Base commit hash for the sample."""
 
@@ -75,6 +77,8 @@ class Sample(BaseModel):
 
 
 class SampleListResponse(BaseModel):
+    """Response for listing samples with pagination."""
+
     has_more: bool
     """Indicates if more pages of results are available."""
 

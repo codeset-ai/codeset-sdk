@@ -8,6 +8,8 @@ __all__ = ["ContainerInfo"]
 
 
 class ContainerInfo(BaseModel):
+    """Information about a container."""
+
     container_name: str
     """Name of the Cloud Run service."""
 

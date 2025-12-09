@@ -6,6 +6,8 @@ __all__ = ["ErrorInfo"]
 
 
 class ErrorInfo(BaseModel):
+    """Details about an error that occurred during job processing."""
+
     code: str
     """A unique error code for programmatic handling."""
 
