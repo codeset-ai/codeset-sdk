@@ -9,6 +9,8 @@ __all__ = ["VerifyStartResponse"]
 
 
 class VerifyStartResponse(BaseModel):
+    """Response for starting verification (async)."""
+
     job_id: str
     """Unique identifier for the verification job."""
 

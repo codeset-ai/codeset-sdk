@@ -9,6 +9,8 @@ __all__ = ["SessionCreateResponse"]
 
 
 class SessionCreateResponse(BaseModel):
+    """Response for creating a session."""
+
     expires_at: datetime
     """Timestamp when the session will expire (UTC)."""
 

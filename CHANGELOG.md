@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.4.2 (2025-12-09)
+
+Full Changelog: [v0.4.1...v0.4.2](https://github.com/codeset-ai/codeset-sdk/compare/v0.4.1...v0.4.2)
+
+### Bug Fixes
+
+* **types:** allow pyright to infer TypedDict types within SequenceNotStr ([407f814](https://github.com/codeset-ai/codeset-sdk/commit/407f814eaf1d8151a13e272243b492542fb23675))
+
+
+### Chores
+
+* add missing docstrings ([e0845d6](https://github.com/codeset-ai/codeset-sdk/commit/e0845d6ac0f6f8b234cd288b6e2a551b39f1fc00))
+* **docs:** use environment variables for authentication in code snippets ([924ade7](https://github.com/codeset-ai/codeset-sdk/commit/924ade7a4e7f38164fc2361edd00aad8d34e9d67))
+* update lockfile ([25c7fbf](https://github.com/codeset-ai/codeset-sdk/commit/25c7fbff8479284b05e329be22849180a033936a))
+
 ## 0.4.1 (2025-11-28)
 
 Full Changelog: [v0.4.0...v0.4.1](https://github.com/codeset-ai/codeset-sdk/compare/v0.4.0...v0.4.1)
