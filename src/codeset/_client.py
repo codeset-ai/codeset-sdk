@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import os
-from typing import Any, Mapping
+from typing import TYPE_CHECKING, Any, Mapping
 from typing_extensions import Self, override
 
 import httpx
@@ -21,8 +21,8 @@ from ._types import (
     not_given,
 )
 from ._utils import is_given, get_async_library
+from ._compat import cached_property
 from ._version import __version__
-from .resources import health, samples, datasets
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import APIStatusError
 from ._base_client import (
@@ -30,19 +30,18 @@ from ._base_client import (
     SyncAPIClient,
     AsyncAPIClient,
 )
-from .resources.sessions import sessions
+
+if TYPE_CHECKING:
+    from .resources import health, samples, datasets, sessions
+    from .resources.health import HealthResource, AsyncHealthResource
+    from .resources.samples import SamplesResource, AsyncSamplesResource
+    from .resources.datasets import DatasetsResource, AsyncDatasetsResource
+    from .resources.sessions.sessions import SessionsResource, AsyncSessionsResource
 
 __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Codeset", "AsyncCodeset", "Client", "AsyncClient"]
 
 
 class Codeset(SyncAPIClient):
-    health: health.HealthResource
-    samples: samples.SamplesResource
-    datasets: datasets.DatasetsResource
-    sessions: sessions.SessionsResource
-    with_raw_response: CodesetWithRawResponse
-    with_streaming_response: CodesetWithStreamedResponse
-
     # client options
     api_key: str | None
 
@@ -93,12 +92,37 @@ class Codeset(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.health = health.HealthResource(self)
-        self.samples = samples.SamplesResource(self)
-        self.datasets = datasets.DatasetsResource(self)
-        self.sessions = sessions.SessionsResource(self)
-        self.with_raw_response = CodesetWithRawResponse(self)
-        self.with_streaming_response = CodesetWithStreamedResponse(self)
+    @cached_property
+    def health(self) -> HealthResource:
+        from .resources.health import HealthResource
+
+        return HealthResource(self)
+
+    @cached_property
+    def samples(self) -> SamplesResource:
+        from .resources.samples import SamplesResource
+
+        return SamplesResource(self)
+
+    @cached_property
+    def datasets(self) -> DatasetsResource:
+        from .resources.datasets import DatasetsResource
+
+        return DatasetsResource(self)
+
+    @cached_property
+    def sessions(self) -> SessionsResource:
+        from .resources.sessions import SessionsResource
+
+        return SessionsResource(self)
+
+    @cached_property
+    def with_raw_response(self) -> CodesetWithRawResponse:
+        return CodesetWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> CodesetWithStreamedResponse:
+        return CodesetWithStreamedResponse(self)
 
     @property
     @override
@@ -219,13 +243,6 @@ class Codeset(SyncAPIClient):
 
 
 class AsyncCodeset(AsyncAPIClient):
-    health: health.AsyncHealthResource
-    samples: samples.AsyncSamplesResource
-    datasets: datasets.AsyncDatasetsResource
-    sessions: sessions.AsyncSessionsResource
-    with_raw_response: AsyncCodesetWithRawResponse
-    with_streaming_response: AsyncCodesetWithStreamedResponse
-
     # client options
     api_key: str | None
 
@@ -276,12 +293,37 @@ class AsyncCodeset(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.health = health.AsyncHealthResource(self)
-        self.samples = samples.AsyncSamplesResource(self)
-        self.datasets = datasets.AsyncDatasetsResource(self)
-        self.sessions = sessions.AsyncSessionsResource(self)
-        self.with_raw_response = AsyncCodesetWithRawResponse(self)
-        self.with_streaming_response = AsyncCodesetWithStreamedResponse(self)
+    @cached_property
+    def health(self) -> AsyncHealthResource:
+        from .resources.health import AsyncHealthResource
+
+        return AsyncHealthResource(self)
+
+    @cached_property
+    def samples(self) -> AsyncSamplesResource:
+        from .resources.samples import AsyncSamplesResource
+
+        return AsyncSamplesResource(self)
+
+    @cached_property
+    def datasets(self) -> AsyncDatasetsResource:
+        from .resources.datasets import AsyncDatasetsResource
+
+        return AsyncDatasetsResource(self)
+
+    @cached_property
+    def sessions(self) -> AsyncSessionsResource:
+        from .resources.sessions import AsyncSessionsResource
+
+        return AsyncSessionsResource(self)
+
+    @cached_property
+    def with_raw_response(self) -> AsyncCodesetWithRawResponse:
+        return AsyncCodesetWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AsyncCodesetWithStreamedResponse:
+        return AsyncCodesetWithStreamedResponse(self)
 
     @property
     @override
@@ -402,35 +444,127 @@ class AsyncCodeset(AsyncAPIClient):
 
 
 class CodesetWithRawResponse:
+    _client: Codeset
+
     def __init__(self, client: Codeset) -> None:
-        self.health = health.HealthResourceWithRawResponse(client.health)
-        self.samples = samples.SamplesResourceWithRawResponse(client.samples)
-        self.datasets = datasets.DatasetsResourceWithRawResponse(client.datasets)
-        self.sessions = sessions.SessionsResourceWithRawResponse(client.sessions)
+        self._client = client
+
+    @cached_property
+    def health(self) -> health.HealthResourceWithRawResponse:
+        from .resources.health import HealthResourceWithRawResponse
+
+        return HealthResourceWithRawResponse(self._client.health)
+
+    @cached_property
+    def samples(self) -> samples.SamplesResourceWithRawResponse:
+        from .resources.samples import SamplesResourceWithRawResponse
+
+        return SamplesResourceWithRawResponse(self._client.samples)
+
+    @cached_property
+    def datasets(self) -> datasets.DatasetsResourceWithRawResponse:
+        from .resources.datasets import DatasetsResourceWithRawResponse
+
+        return DatasetsResourceWithRawResponse(self._client.datasets)
+
+    @cached_property
+    def sessions(self) -> sessions.SessionsResourceWithRawResponse:
+        from .resources.sessions import SessionsResourceWithRawResponse
+
+        return SessionsResourceWithRawResponse(self._client.sessions)
 
 
 class AsyncCodesetWithRawResponse:
+    _client: AsyncCodeset
+
     def __init__(self, client: AsyncCodeset) -> None:
-        self.health = health.AsyncHealthResourceWithRawResponse(client.health)
-        self.samples = samples.AsyncSamplesResourceWithRawResponse(client.samples)
-        self.datasets = datasets.AsyncDatasetsResourceWithRawResponse(client.datasets)
-        self.sessions = sessions.AsyncSessionsResourceWithRawResponse(client.sessions)
+        self._client = client
+
+    @cached_property
+    def health(self) -> health.AsyncHealthResourceWithRawResponse:
+        from .resources.health import AsyncHealthResourceWithRawResponse
+
+        return AsyncHealthResourceWithRawResponse(self._client.health)
+
+    @cached_property
+    def samples(self) -> samples.AsyncSamplesResourceWithRawResponse:
+        from .resources.samples import AsyncSamplesResourceWithRawResponse
+
+        return AsyncSamplesResourceWithRawResponse(self._client.samples)
+
+    @cached_property
+    def datasets(self) -> datasets.AsyncDatasetsResourceWithRawResponse:
+        from .resources.datasets import AsyncDatasetsResourceWithRawResponse
+
+        return AsyncDatasetsResourceWithRawResponse(self._client.datasets)
+
+    @cached_property
+    def sessions(self) -> sessions.AsyncSessionsResourceWithRawResponse:
+        from .resources.sessions import AsyncSessionsResourceWithRawResponse
+
+        return AsyncSessionsResourceWithRawResponse(self._client.sessions)
 
 
 class CodesetWithStreamedResponse:
+    _client: Codeset
+
     def __init__(self, client: Codeset) -> None:
-        self.health = health.HealthResourceWithStreamingResponse(client.health)
-        self.samples = samples.SamplesResourceWithStreamingResponse(client.samples)
-        self.datasets = datasets.DatasetsResourceWithStreamingResponse(client.datasets)
-        self.sessions = sessions.SessionsResourceWithStreamingResponse(client.sessions)
+        self._client = client
+
+    @cached_property
+    def health(self) -> health.HealthResourceWithStreamingResponse:
+        from .resources.health import HealthResourceWithStreamingResponse
+
+        return HealthResourceWithStreamingResponse(self._client.health)
+
+    @cached_property
+    def samples(self) -> samples.SamplesResourceWithStreamingResponse:
+        from .resources.samples import SamplesResourceWithStreamingResponse
+
+        return SamplesResourceWithStreamingResponse(self._client.samples)
+
+    @cached_property
+    def datasets(self) -> datasets.DatasetsResourceWithStreamingResponse:
+        from .resources.datasets import DatasetsResourceWithStreamingResponse
+
+        return DatasetsResourceWithStreamingResponse(self._client.datasets)
+
+    @cached_property
+    def sessions(self) -> sessions.SessionsResourceWithStreamingResponse:
+        from .resources.sessions import SessionsResourceWithStreamingResponse
+
+        return SessionsResourceWithStreamingResponse(self._client.sessions)
 
 
 class AsyncCodesetWithStreamedResponse:
+    _client: AsyncCodeset
+
     def __init__(self, client: AsyncCodeset) -> None:
-        self.health = health.AsyncHealthResourceWithStreamingResponse(client.health)
-        self.samples = samples.AsyncSamplesResourceWithStreamingResponse(client.samples)
-        self.datasets = datasets.AsyncDatasetsResourceWithStreamingResponse(client.datasets)
-        self.sessions = sessions.AsyncSessionsResourceWithStreamingResponse(client.sessions)
+        self._client = client
+
+    @cached_property
+    def health(self) -> health.AsyncHealthResourceWithStreamingResponse:
+        from .resources.health import AsyncHealthResourceWithStreamingResponse
+
+        return AsyncHealthResourceWithStreamingResponse(self._client.health)
+
+    @cached_property
+    def samples(self) -> samples.AsyncSamplesResourceWithStreamingResponse:
+        from .resources.samples import AsyncSamplesResourceWithStreamingResponse
+
+        return AsyncSamplesResourceWithStreamingResponse(self._client.samples)
+
+    @cached_property
+    def datasets(self) -> datasets.AsyncDatasetsResourceWithStreamingResponse:
+        from .resources.datasets import AsyncDatasetsResourceWithStreamingResponse
+
+        return AsyncDatasetsResourceWithStreamingResponse(self._client.datasets)
+
+    @cached_property
+    def sessions(self) -> sessions.AsyncSessionsResourceWithStreamingResponse:
+        from .resources.sessions import AsyncSessionsResourceWithStreamingResponse
+
+        return AsyncSessionsResourceWithStreamingResponse(self._client.sessions)
 
 
 Client = Codeset
