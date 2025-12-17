@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.4.3 (2025-12-17)
+
+Full Changelog: [v0.4.2...v0.4.3](https://github.com/codeset-ai/codeset-sdk/compare/v0.4.2...v0.4.3)
+
+### Chores
+
+* **internal:** add missing files argument to base client ([6cca943](https://github.com/codeset-ai/codeset-sdk/commit/6cca943c643a5b3fb4448537a5fb4f257718586a))
+* speedup initial import ([e638181](https://github.com/codeset-ai/codeset-sdk/commit/e63818151bb949b6c4ab83d85adeea4f07b15a10))
+
 ## 0.4.2 (2025-12-09)
 
 Full Changelog: [v0.4.1...v0.4.2](https://github.com/codeset-ai/codeset-sdk/compare/v0.4.1...v0.4.2)
