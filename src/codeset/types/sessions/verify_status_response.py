@@ -36,6 +36,12 @@ class Result(BaseModel):
     failures: Optional[List[object]] = None
     """A list of failed tests with their details."""
 
+    passes: Optional[List[object]] = None
+    """A list of passing tests with their details."""
+
+    skips: Optional[List[object]] = None
+    """A list of skipped/ignored tests with their details."""
+
     stderr: Optional[str] = None
     """Standard error from the verifier."""
 
