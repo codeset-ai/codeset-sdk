@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.4 (2025-12-18)
+
+Full Changelog: [v0.4.3...v0.4.4](https://github.com/codeset-ai/codeset-sdk/compare/v0.4.3...v0.4.4)
+
+### Bug Fixes
+
+* use async_to_httpx_files in patch method ([a63d593](https://github.com/codeset-ai/codeset-sdk/commit/a63d59320324da7bf595d6a26dd5a0bc8d519d7b))
+
 ## 0.4.3 (2025-12-17)
 
 Full Changelog: [v0.4.2...v0.4.3](https://github.com/codeset-ai/codeset-sdk/compare/v0.4.2...v0.4.3)
