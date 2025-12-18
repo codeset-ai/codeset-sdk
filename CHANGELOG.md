@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.0 (2025-12-18)
+
+Full Changelog: [v0.4.4...v0.5.0](https://github.com/codeset-ai/codeset-sdk/compare/v0.4.4...v0.5.0)
+
+### Features
+
+* **api:** api update ([37ddbe8](https://github.com/codeset-ai/codeset-sdk/commit/37ddbe8d5b3fff5248aed6532b6114fc48d43fac))
+
 ## 0.4.4 (2025-12-18)
 
 Full Changelog: [v0.4.3...v0.4.4](https://github.com/codeset-ai/codeset-sdk/compare/v0.4.3...v0.4.4)
