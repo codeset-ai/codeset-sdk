@@ -25,6 +25,7 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
+from ..._exceptions import CodesetError
 from ..._base_client import make_request_options
 from ...types.session import Session
 from ...types.interaction import Interaction
@@ -318,6 +319,9 @@ class SessionsResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=get_remaining_timeout(timeout, start_time),
             )
+
+        if interaction.exit_code == -1000:
+            raise CodesetError(interaction.message or "Command execution failed")
 
         return interaction
 
@@ -689,6 +693,9 @@ class AsyncSessionsResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=get_remaining_timeout(timeout, start_time),
             )
+
+        if interaction.exit_code == -1000:
+            raise CodesetError(interaction.message or "Command execution failed")
 
         return interaction
 
