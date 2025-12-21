@@ -4,4 +4,4 @@ from typing_extensions import Literal, TypeAlias
 
 __all__ = ["SessionStatus"]
 
-SessionStatus: TypeAlias = Literal["creating", "ready", "error", "closed"]
+SessionStatus: TypeAlias = Literal["creating", "ready", "error", "closed", "terminated"]
