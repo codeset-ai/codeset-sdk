@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.8.0 (2026-01-14)
+
+Full Changelog: [v0.7.0...v0.8.0](https://github.com/codeset-ai/codeset-sdk/compare/v0.7.0...v0.8.0)
+
+### Features
+
+* **client:** add support for binary request streaming ([fcdcca6](https://github.com/codeset-ai/codeset-sdk/commit/fcdcca6cd3117cfe5c5898006664d272dd8b5a1b))
+
+
+### Bug Fixes
+
+* **client:** loosen auth header validation ([71b426e](https://github.com/codeset-ai/codeset-sdk/commit/71b426ee0a7f0a1bd28df0519fb0b201a40d9cb8))
+
+
+### Chores
+
+* **internal:** codegen related update ([152bed7](https://github.com/codeset-ai/codeset-sdk/commit/152bed743bc2aee4b30414de8be40ad070157e0d))
+
 ## 0.7.0 (2025-12-21)
 
 Full Changelog: [v0.6.0...v0.7.0](https://github.com/codeset-ai/codeset-sdk/compare/v0.6.0...v0.7.0)
