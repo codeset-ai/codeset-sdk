@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.1 (2026-01-17)
+
+Full Changelog: [v0.8.0...v0.8.1](https://github.com/codeset-ai/codeset-sdk/compare/v0.8.0...v0.8.1)
+
+### Chores
+
+* **internal:** update `actions/checkout` version ([e6be1cb](https://github.com/codeset-ai/codeset-sdk/commit/e6be1cb0f4aa1604d518320dd911c1973c8bf407))
+
 ## 0.8.0 (2026-01-14)
 
 Full Changelog: [v0.7.0...v0.8.0](https://github.com/codeset-ai/codeset-sdk/compare/v0.7.0...v0.8.0)
