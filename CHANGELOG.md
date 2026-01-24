@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.2 (2026-01-24)
+
+Full Changelog: [v0.8.1...v0.8.2](https://github.com/codeset-ai/codeset-sdk/compare/v0.8.1...v0.8.2)
+
+### Chores
+
+* **ci:** upgrade `actions/github-script` ([07fe15a](https://github.com/codeset-ai/codeset-sdk/commit/07fe15a10f917406f0d576173569d14e4185515d))
+
 ## 0.8.1 (2026-01-17)
 
 Full Changelog: [v0.8.0...v0.8.1](https://github.com/codeset-ai/codeset-sdk/compare/v0.8.0...v0.8.1)
