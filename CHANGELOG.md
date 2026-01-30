@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.9.0 (2026-01-30)
+
+Full Changelog: [v0.8.1...v0.9.0](https://github.com/codeset-ai/codeset-sdk/compare/v0.8.1...v0.9.0)
+
+### Features
+
+* **client:** add custom JSON encoder for extended type support ([bf2de0a](https://github.com/codeset-ai/codeset-sdk/commit/bf2de0a3707cedf2b7a7eaa0581a91e18b5d1276))
+
+
+### Chores
+
+* **ci:** upgrade `actions/github-script` ([07fe15a](https://github.com/codeset-ai/codeset-sdk/commit/07fe15a10f917406f0d576173569d14e4185515d))
+
 ## 0.8.1 (2026-01-17)
 
 Full Changelog: [v0.8.0...v0.8.1](https://github.com/codeset-ai/codeset-sdk/compare/v0.8.0...v0.8.1)
