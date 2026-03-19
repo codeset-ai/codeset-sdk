@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.9.1 (2026-03-19)
+
+Full Changelog: [v0.9.0...v0.9.1](https://github.com/codeset-ai/codeset-sdk/compare/v0.9.0...v0.9.1)
+
+### Bug Fixes
+
+* **deps:** bump minimum typing-extensions version ([af9c4df](https://github.com/codeset-ai/codeset-sdk/commit/af9c4df2f447222e6fb3aa83654782c1637a1c87))
+* **pydantic:** do not pass `by_alias` unless set ([6103bab](https://github.com/codeset-ai/codeset-sdk/commit/6103bab56a106744f08e02f4a6b60a075e56589c))
+
+
+### Chores
+
+* **ci:** skip uploading artifacts on stainless-internal branches ([2bd4660](https://github.com/codeset-ai/codeset-sdk/commit/2bd46606de9bde083cda62812e5c28ae8e55720f))
+* **internal:** add request options to SSE classes ([5de689d](https://github.com/codeset-ai/codeset-sdk/commit/5de689dab3639b40fbb09ec09cbef4f408d6d75c))
+* **internal:** make `test_proxy_environment_variables` more resilient ([3a8310d](https://github.com/codeset-ai/codeset-sdk/commit/3a8310dcf37b4575283e90928810146111c81ace))
+* **internal:** make `test_proxy_environment_variables` more resilient to env ([3f933fc](https://github.com/codeset-ai/codeset-sdk/commit/3f933fcbfa8dea240917a15fb418580710d3bf64))
+* **internal:** tweak CI branches ([f14bb64](https://github.com/codeset-ai/codeset-sdk/commit/f14bb641bb0a164440e31ad1cf2e9f1bf66c20d7))
+
 ## 0.9.0 (2026-02-20)
 
 Full Changelog: [v0.8.1...v0.9.0](https://github.com/codeset-ai/codeset-sdk/compare/v0.8.1...v0.9.0)
