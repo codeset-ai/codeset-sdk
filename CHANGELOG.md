@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.10.0 (2026-04-11)
+
+Full Changelog: [v0.9.1...v0.10.0](https://github.com/codeset-ai/codeset-sdk/compare/v0.9.1...v0.10.0)
+
+### Features
+
+* **internal:** implement indices array format for query and form serialization ([e8705af](https://github.com/codeset-ai/codeset-sdk/commit/e8705af037eb0ceb906d2606046fc0f9c5972090))
+
+
+### Bug Fixes
+
+* **client:** preserve hardcoded query params when merging with user params ([cb2f242](https://github.com/codeset-ai/codeset-sdk/commit/cb2f2424bbc76cf1f6c4a862a6361073882be1fb))
+* ensure file data are only sent as 1 parameter ([cb9c5e4](https://github.com/codeset-ai/codeset-sdk/commit/cb9c5e486f5004f6f8965413b52f72d1c9637c41))
+* sanitize endpoint path params ([f15eb64](https://github.com/codeset-ai/codeset-sdk/commit/f15eb6430f2a6db2bb9e85ae72798d1ee1f611c4))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([2916b5e](https://github.com/codeset-ai/codeset-sdk/commit/2916b5ecd528a6f959e2c9fc22f7cd0017bcd59d))
+* **internal:** update gitignore ([b9af451](https://github.com/codeset-ai/codeset-sdk/commit/b9af451567d393ba7ec8b5504201d0f44ff625ca))
+
 ## 0.9.1 (2026-03-19)
 
 Full Changelog: [v0.9.0...v0.9.1](https://github.com/codeset-ai/codeset-sdk/compare/v0.9.0...v0.9.1)
