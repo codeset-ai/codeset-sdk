@@ -1,5 +1,35 @@
 # Changelog
 
+## 0.10.0 (2026-05-01)
+
+Full Changelog: [v0.9.1...v0.10.0](https://github.com/codeset-ai/codeset-sdk/compare/v0.9.1...v0.10.0)
+
+### Features
+
+* **internal:** implement indices array format for query and form serialization ([e8705af](https://github.com/codeset-ai/codeset-sdk/commit/e8705af037eb0ceb906d2606046fc0f9c5972090))
+* support setting headers via env ([7f7b162](https://github.com/codeset-ai/codeset-sdk/commit/7f7b1626103e5ab342e5744565bb5c52206a76c6))
+
+
+### Bug Fixes
+
+* **client:** preserve hardcoded query params when merging with user params ([cb2f242](https://github.com/codeset-ai/codeset-sdk/commit/cb2f2424bbc76cf1f6c4a862a6361073882be1fb))
+* ensure file data are only sent as 1 parameter ([cb9c5e4](https://github.com/codeset-ai/codeset-sdk/commit/cb9c5e486f5004f6f8965413b52f72d1c9637c41))
+* sanitize endpoint path params ([f15eb64](https://github.com/codeset-ai/codeset-sdk/commit/f15eb6430f2a6db2bb9e85ae72798d1ee1f611c4))
+* use correct field name format for multipart file arrays ([4c5b065](https://github.com/codeset-ai/codeset-sdk/commit/4c5b06546ed0fd6ddce8578d3e8c70f3d80b46ed))
+
+
+### Performance Improvements
+
+* **client:** optimize file structure copying in multipart requests ([af3852a](https://github.com/codeset-ai/codeset-sdk/commit/af3852a697ce07d7aade06110b6029c75dbb5424))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([2916b5e](https://github.com/codeset-ai/codeset-sdk/commit/2916b5ecd528a6f959e2c9fc22f7cd0017bcd59d))
+* **internal:** more robust bootstrap script ([8d6d094](https://github.com/codeset-ai/codeset-sdk/commit/8d6d09482395b05f70e4b7adcb4f5234de114131))
+* **internal:** reformat pyproject.toml ([6daf614](https://github.com/codeset-ai/codeset-sdk/commit/6daf614c4555d1ed5a8a1ee13adc5410899d8a01))
+* **internal:** update gitignore ([b9af451](https://github.com/codeset-ai/codeset-sdk/commit/b9af451567d393ba7ec8b5504201d0f44ff625ca))
+
 ## 0.9.1 (2026-03-19)
 
 Full Changelog: [v0.9.0...v0.9.1](https://github.com/codeset-ai/codeset-sdk/compare/v0.9.0...v0.9.1)
